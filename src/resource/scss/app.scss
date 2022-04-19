@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.btn {
+  position: absolute;
+  background: #3498db;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn:active {
+  background: #2980b9;
+}
+
+.modal {
+  display: none;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+#show-modal:checked ~ .modal {
+  display: block;
+}
+
+.times {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  background: #3498db;
+  width: 60vw;
+  height: 65vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  padding: 8px;
+  z-index: 2;
+}
+
+.list {
+  list-style: none;
+  border-right: 2px solid #fff;
+  padding: 0 8px;
+}
+.list__item {
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.list__item.active {
+  background: #2980b9;
+}
+
+.list__item:hover {
+  background: #2980b9;
+}
+
+.form__body {
+  flex: 1;
+}
+.form__body-display {
+  display: none;
+}
+
+.form__body-display.active {
+  display: block;
+}
+
+.form__body-display h2 {
+  color: #fff;
+  text-align: center;
+}
