@@ -64,6 +64,17 @@ let addNewTurn = async (req, res) => {
   ]);
   return res.redirect("console");
 };
+let deleteVehicle = async (req, res) => {
+  let idV = req.body.idV;
+  await pool.execute("delete from vehicle where idV = ?", [idV]);
+  return res.redirect("allVehicle");
+};
+let deleteUser = async (req, res) => {
+  let id = req.body.id;
+  await pool.execute("delete from vehicle where id = ?", [id]);
+  await pool.execute("delete from userB where id = ?", [id]);
+  return res.redirect("allUser");
+};
 module.exports = {
   getAllUser,
   getDetailPageU,
@@ -72,4 +83,6 @@ module.exports = {
   addNewVehicle,
   getAllVehicle,
   addNewTurn,
+  deleteVehicle,
+  deleteUser,
 };

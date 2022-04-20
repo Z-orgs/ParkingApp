@@ -38,7 +38,10 @@
                     <td>
                         <a href="/detail/vehicle/<%= dataVehicle[i].idV%>">Detail</a>
                         <button type="button">Edit</button>
-                        <button type="button">Delete</button>
+                        <form action="delete-vehicle" method="post">
+                            <input type="text" name="idV" hidden value="<%= dataVehicle[i].idV%>">
+                            <button type="submit">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 <% } %>
