@@ -1,17 +1,29 @@
 import full from "@babel/core/lib/config/full";
 import pool from "../configs/connectDB";
 let getAllUser = async (req, res) => {
-  // pool.execute("use bcxvjyobemi2jcorkr23");
-  const [rows, fields] = await pool.execute("SELECT * FROM userB");
-  return res.render("console.ejs", { dataUser: rows });
+  const [rows, fields] = await pool.execute("SELECT * FROM userB;");
+  return res.render("allUser.ejs", { dataUser: rows });
 };
-let getDetailPage = async (req, res) => {
+let getAllVehicle = async (req, res) => {
+  const [rows, fields] = await pool.execute("SELECT * FROM vehicle;");
+  return res.render("allVehicle.ejs", { dataVehicle: rows });
+};
+let getDetailPageU = async (req, res) => {
   let id = req.params.userId;
   const [row, fields] = await pool.execute("select * from userB where id = ?", [
     id,
   ]);
   console.log(row);
-  return res.render("detail.ejs", { dataUser: row });
+  return res.render("detailU.ejs", { dataUser: row });
+};
+let getDetailPageV = async (req, res) => {
+  let id = req.params.idV;
+  const [row, fields] = await pool.execute(
+    "select * from vehicle where idV = ?",
+    [id]
+  );
+  console.log(row);
+  return res.render("detailV.ejs", { dataVehicle: row });
 };
 let addNewUser = async (req, res) => {
   let { typeUser, fullName, tel, addr } = req.body;
@@ -31,7 +43,9 @@ let addNewVehicle = async (req, res) => {
 };
 module.exports = {
   getAllUser,
-  getDetailPage,
+  getDetailPageU,
+  getDetailPageV,
   addNewUser,
   addNewVehicle,
+  getAllVehicle,
 };

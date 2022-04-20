@@ -9,6 +9,4 @@ const PORT = process.env.PORT || 3000;
 configViewEngine(app);
 initWebRoute(app);
 
-app.listen(PORT, () => {
-  console.log(`${PORT}`);
-});
+app.listen(PORT);

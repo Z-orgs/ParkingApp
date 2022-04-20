@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="form__body-display">
+        <h2>Danh sách phương tiện</h2>
+        <table>
+            <tr>
+                <th>ID(Vehicle)</th>
+                <th>License</th>
+                <th>Type</th>
+                <th>Owner by ID</th>
+                <th>Actions</th>
+            </tr>
+            <% for(var i=0; i < dataVehicle.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= dataVehicle[i].idV %>
+                    </td>
+                    <td>
+                        <%= dataVehicle[i].license %>
+                    </td>
+                    <td>
+                        <%= dataVehicle[i].type %>
+                    </td>
+                    <td>
+                        <%= dataVehicle[i].id %>
+                    </td>
+                    <td>
+                        <a href="/detail/vehicle/<%= dataVehicle[i].idV%>">Detail</a>
+                        <button type="button">Edit</button>
+                        <button type="button">Delete</button>
+                    </td>
+                </tr>
+                <% } %>
+        </table>
+    </div>
+</body>
+
+</html>

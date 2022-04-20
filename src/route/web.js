@@ -4,8 +4,13 @@ import consoleController from "../controller/consoleController.js";
 let router = express.Router();
 const initWebRoute = (app) => {
   router.get("/", homeController.getHomePage);
-  router.get("/console", consoleController.getAllUser);
-  router.get("/detail/user/:userId", consoleController.getDetailPage);
+  router.get("/console", (req, res) => {
+    res.render("console.ejs");
+  });
+  router.get("/allUser", consoleController.getAllUser);
+  router.get("/allVehicle", consoleController.getAllVehicle);
+  router.get("/detail/user/:userId", consoleController.getDetailPageU);
+  router.get("/detail/vehicle/:idV", consoleController.getDetailPageV);
   router.post("/add-new-user", consoleController.addNewUser);
   router.post("/add-new-vehicle", consoleController.addNewVehicle);
   return app.use("/", router);
