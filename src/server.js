@@ -1,11 +1,12 @@
-var express = require("express");
-var bodyparser = require("body-parser");
+import express from "express";
+import configViewEngine from "./configs/viewEngine";
+import initWebRoute from "./route/web";
+import connection from "./configs/connectDB";
+const app = express();
 const PORT = process.env.PORT || 3000;
-var app = express();
-app.use(bodyparser.urlencoded({ extended: true }));
-app.use(bodyparser.json());
+configViewEngine(app);
+initWebRoute(app);
 
-var server = app.listen(PORT, function () {
-  console.log("Server listening on port " + server.address().port);
+app.listen(PORT, () => {
+  console.log(`${PORT}`);
 });
-module.exports = app;
