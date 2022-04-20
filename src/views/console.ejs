@@ -17,19 +17,25 @@
         <label for="show-modal" class="times">&times;</label>
         <div class="form">
             <ul class="list">
-                <li class="list__item active">Mở cửa </li>
-                <li class="list__item">Đóng cửa.</li>
+                <li class="list__item active">Thêm lượt gửi xe</li>
                 <li class="list__item">Thêm người dùng.</li>
                 <li class="list__item">Thêm phương tiện.</li>
-                <li class="list__item"><a href="/allVehicle">Danh sách phương tiện</a></li>
-                <li class="list__item"><a href="/allUser">Danh sách người dùng.</a></li>
+                <li class=""><a href="/allVehicle">Danh sách phương tiện</a></li>
+                <li class=""><a href="/allUser">Danh sách người dùng.</a></li>
             </ul>
             <div class="form__body">
                 <div class="form__body-display active">
-                    <h2>Mở cửa</h2>
-                </div>
-                <div class="form__body-display">
-                    <h2>Đóng cửa</h2>
+                    <h2>Thêm lượt gửi xe</h2>
+                    <form action="add-new-turn" method="post">
+                        <div class="mb-3">
+                            <label for="license" class="form-label">Nhập biển số xe</label>
+                            <input type="text" class="form-control" name="license"
+                                placeholder="Example input placeholder">
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="form__body-display">
                     <h2>Thêm người dùng</h2>
@@ -73,7 +79,7 @@
                                 placeholder="Example input placeholder">
                         </div>
                         <div class="mb-3">
-                            <label for="id" class="form-label">ID</label>
+                            <label for="id" class="form-label">Owner by ID</label>
                             <input type="text" class="form-control" name="id" placeholder="Another input placeholder">
                         </div>
                         <div class="col-12">

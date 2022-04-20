@@ -7,6 +7,7 @@ const initWebRoute = (app) => {
   router.get("/console", (req, res) => {
     res.render("console.ejs");
   });
+  router.post("/add-new-turn", consoleController.addNewTurn);
   router.get("/allUser", consoleController.getAllUser);
   router.get("/allVehicle", consoleController.getAllVehicle);
   router.get("/detail/user/:userId", consoleController.getDetailPageU);

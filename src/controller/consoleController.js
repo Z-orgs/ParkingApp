@@ -13,7 +13,6 @@ let getDetailPageU = async (req, res) => {
   const [row, fields] = await pool.execute("select * from userB where id = ?", [
     id,
   ]);
-  console.log(row);
   return res.render("detailU.ejs", { dataUser: row });
 };
 let getDetailPageV = async (req, res) => {
@@ -22,7 +21,6 @@ let getDetailPageV = async (req, res) => {
     "select * from vehicle where idV = ?",
     [id]
   );
-  console.log(row);
   return res.render("detailV.ejs", { dataVehicle: row });
 };
 let addNewUser = async (req, res) => {
@@ -41,6 +39,31 @@ let addNewVehicle = async (req, res) => {
   );
   return res.redirect("console");
 };
+let addNewTurn = async (req, res) => {
+  let license = req.body.license;
+  const [rows, fields] = await pool.execute(
+    "select * from vehicle where license = ?",
+    [license]
+  );
+  let price =
+    rows[0].type === "type1"
+      ? 3000
+      : rows[0].type === "type2"
+      ? 5000
+      : rows[0].type === "type3"
+      ? 50000
+      : 20000;
+  const [row, field] = await pool.execute("select * from userB where id = ?", [
+    rows[0].id,
+  ]);
+  let inDebt = row[0].inDebt;
+  inDebt += price;
+  await pool.execute("update userB set inDebt = ? where id = ?", [
+    inDebt,
+    rows[0].id,
+  ]);
+  return res.redirect("console");
+};
 module.exports = {
   getAllUser,
   getDetailPageU,
@@ -48,4 +71,5 @@ module.exports = {
   addNewUser,
   addNewVehicle,
   getAllVehicle,
+  addNewTurn,
 };
