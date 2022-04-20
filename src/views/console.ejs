@@ -24,7 +24,7 @@
                 <li class="list__item">Sửa thông tin.</li>
                 <li class="list__item">Thêm phương tiện.</li>
                 <li class="list__item">Xóa phương tiện.</li>
-                <li class="list__item">Tra cứu thông tin.</li>
+                <li class="list__item">Danh sách người dùng.</li>
             </ul>
             <div class="form__body">
                 <div class="form__body-display active">
@@ -37,8 +37,8 @@
                     <h2>Thêm người dùng</h2>
                     <form action="" method="post">
                         <div><select name="typeOfUser" id="typeOfUser">
-                                <option value="Child">Trẻ con</option>
-                                <option value="Adult">Người lớn</option>
+                                <option value="Child">Child</option>
+                                <option value="Adult">Adult</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -99,6 +99,38 @@
                 </div>
                 <div class="form__body-display">
                     <h2>Tra cứu thông tin.</h2>
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Full name</th>
+                            <th>Debt</th>
+                            <th>Tel</th>
+                            <th>Address</th>
+                            <th>Type</th>
+                        </tr>
+                        <% for(var i=0; i < dataUser.length; i++) { %>
+                            <tr>
+                                <td>
+                                    <%= dataUser[i].id %>
+                                </td>
+                                <td>
+                                    <%= dataUser[i].fullName %>
+                                </td>
+                                <td>
+                                    <%= dataUser[i].inDebt %>
+                                </td>
+                                <td>
+                                    <%= dataUser[i].tel %>
+                                </td>
+                                <td>
+                                    <%= dataUser[i].addr %>
+                                </td>
+                                <td>
+                                    <%= dataUser[i].typeUser %>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </table>
                 </div>
             </div>
         </div>
@@ -124,7 +156,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <script src="/js/features.js" type="module"></script>
 </body>
 
 </html>
