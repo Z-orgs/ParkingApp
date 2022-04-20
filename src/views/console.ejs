@@ -33,55 +33,51 @@
                 </div>
                 <div class="form__body-display">
                     <h2>Thêm người dùng</h2>
-                    <form action="" method="post">
-                        <div><select name="typeOfUser" id="typeOfUser">
+                    <form action="add-new-user" method="post">
+                        <div><select name="typeUser" id="typeOfUser">
                                 <option value="Child">Child</option>
                                 <option value="Adult">Adult</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="getName" class="form-label">Nhập họ tên người dùng</label>
-                            <input type="text" class="form-control" name="getName"
+                            <label for="fullName" class="form-label">Nhập họ tên người dùng</label>
+                            <input type="text" class="form-control" name="fullName"
                                 placeholder="Example input placeholder">
                         </div>
                         <div class="mb-3">
-                            <label for="getTel" class="form-label">Nhập số điện thoại</label>
-                            <input type="text" class="form-control" name="getTel"
-                                placeholder="Another input placeholder">
+                            <label for="tel" class="form-label">Nhập số điện thoại</label>
+                            <input type="text" class="form-control" name="tel" placeholder="Another input placeholder">
                         </div>
                         <div class="mb-3">
-                            <label for="getAdd" class="form-label">Nhập địa chỉ</label>
-                            <input type="text" class="form-control" name="getAdd"
-                                placeholder="Another input placeholder">
+                            <label for="addr" class="form-label">Nhập địa chỉ</label>
+                            <input type="text" class="form-control" name="addr" placeholder="Another input placeholder">
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary" type="submit" name="getButtonType" value="addNewUser">Submit
+                            <button class="btn btn-primary" type="submit">Submit
                                 form</button>
                         </div>
                     </form>
                 </div>
                 <div class="form__body-display">
                     <h2>Thêm phương tiện.</h2>
-                    <form action="" method="post">
-                        <div><select name="typeOfVehicle" id="typeOfUser">
+                    <form action="add-new-vehicle" method="post">
+                        <div><select name="typeVehicle" id="typeOfUser">
                                 <option value="type1">Xe đạp / xe điện</option>
                                 <option value="type2">Xe máy</option>
                                 <option value="type3">Oto</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="getName" class="form-label">Biển số xe</label>
-                            <input type="text" class="form-control" name="getLicense"
+                            <label for="license" class="form-label">Biển số xe</label>
+                            <input type="text" class="form-control" name="license"
                                 placeholder="Example input placeholder">
                         </div>
                         <div class="mb-3">
-                            <label for="getTel" class="form-label">ID</label>
-                            <input type="text" class="form-control" name="getId"
-                                placeholder="Another input placeholder">
+                            <label for="id" class="form-label">ID</label>
+                            <input type="text" class="form-control" name="id" placeholder="Another input placeholder">
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary" type="submit" name="getButtonType"
-                                value="addNewVehicle">Submit
+                            <button class="btn btn-primary" type="submit">Submit
                                 form</button>
                         </div>
                     </form>
@@ -100,6 +96,7 @@
                             <th>Tel</th>
                             <th>Address</th>
                             <th>Type</th>
+                            <th>Actions</th>
                         </tr>
                         <% for(var i=0; i < dataUser.length; i++) { %>
                             <tr>
@@ -120,6 +117,11 @@
                                 </td>
                                 <td>
                                     <%= dataUser[i].typeUser %>
+                                </td>
+                                <td>
+                                    <a href="/detail/user/<%= dataUser[i].id%>">Detail</a>
+                                    <button type="button">Edit</button>
+                                    <button type="button">Delete</button>
                                 </td>
                             </tr>
                             <% } %>
