@@ -8,6 +8,7 @@ let getAllVehicle = async (req, res) => {
   const [rows, fields] = await pool.execute("SELECT * FROM vehicle;");
   return res.render("allVehicle.ejs", { dataVehicle: rows });
 };
+
 let getDetailPageU = async (req, res) => {
   let id = req.params.userId;
   const [row, fields] = await pool.execute("select * from userB where id = ?", [
