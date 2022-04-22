@@ -9,6 +9,7 @@
 
 <body>
     <form action="/update-user" method="POST">
+        <div><input type="text" name="id" value="<%= dataUser.id %>" hidden></div>
         <div>
             <label>Full Name</label>
             <input type="text" name="fullName" value="<%= dataUser.fullName%>">

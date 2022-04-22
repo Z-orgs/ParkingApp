@@ -20,8 +20,9 @@
                 <li class="list__item active">Thêm lượt gửi xe</li>
                 <li class="list__item">Thêm người dùng.</li>
                 <li class="list__item">Thêm phương tiện.</li>
-                <li class=""><a href="/allVehicle">Danh sách phương tiện</a></li>
-                <li class=""><a href="/allUser">Danh sách người dùng.</a></li>
+                <li class="list__item">Thanh toán</li>
+                <li class="list__item">Danh sách phương tiện</li>
+                <li class="list__item">Danh sách người dùng.</li>
             </ul>
             <div class="form__body">
                 <div class="form__body-display active">
@@ -83,8 +84,28 @@
                         </div>
                     </form>
                 </div>
-
-
+                <div class="form__body-display">
+                    <h2>Thanh toán</h2>
+                    <form action="pay-user" method="post">
+                        <div class="mb-3">
+                            <label for="money" class="form-label">Số tiền</label>
+                            <input type="text" class="form-control" name="money">
+                        </div>
+                        <div class="mb-3">
+                            <label for="id" class="form-label">ID</label>
+                            <input type="text" class="form-control" name="id">
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Thanh toán</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="form__body-display">
+                    <iframe src="/allVehicle" frameborder="0"></iframe>
+                </div>
+                <div class="form__body-display">
+                    <iframe src="/allUser" frameborder="0"></iframe>
+                </div>
             </div>
         </div>
     </div>

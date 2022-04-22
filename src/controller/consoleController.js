@@ -81,13 +81,53 @@ let editUser = async (req, res) => {
   return res.render("updateU", { dataUser: user[0][0] });
 };
 let updateUser = async (req, res) => {
-  let { typeUser, fullName, tel, addr } = req.body;
-  // await pool.execute(
-  //   "insert into userB(fullName, inDebt, coefficient, tel, addr, typeUser) values(?, ?, ?, ?, ?, ?);",
-  //   [fullName, 0, typeUser === "Child" ? 1 : 1.3, tel, addr, typeUser]
-  // );
-  console.log(req.body);
+  let { id, fullName, tel, addr } = req.body;
+  await pool.execute(
+    "update userB set fullName = ?, tel = ?, addr = ? where id = ?",
+    [fullName, tel, addr, id]
+  );
   return res.redirect("allUser");
+};
+let editVehicle = async (req, res) => {
+  let idV = req.params.idV;
+  let vehicle = await pool.execute("select * from vehicle where idV = ?", [
+    idV,
+  ]);
+  return res.render("updateV", { dataVehicle: vehicle[0][0] });
+};
+let updateVehicle = async (req, res) => {
+  let { idV, type, license, id } = req.body;
+  await pool.execute(
+    "update vehicle set license = ?, type = ?, id = ? where idV = ?",
+    [license, type, id, idV]
+  );
+  return res.redirect("allVehicle");
+};
+let payment = async (req, res) => {
+  let { money, id } = req.body;
+  let user = await pool.execute("select * from userB where id = ?", [id]);
+  let newInDebt = user[0][0].inDebt - money;
+  await pool.execute("update userB set inDebt = ? where id = ?", [
+    newInDebt,
+    id,
+  ]);
+  return res.redirect("console");
+};
+let searchUser = async (req, res) => {
+  let name = req.body.keywordName;
+  const [rows, fields] = await pool.execute(
+    "select * from userB where fullName like ?",
+    ["%" + name.toString() + "%"]
+  );
+  return res.render("allUser", { dataUser: rows });
+};
+let searchVehicle = async (req, res) => {
+  let license = req.body.keywordLicense;
+  const [rows, fields] = await pool.execute(
+    "select * from vehicle where license like ?",
+    ["%" + license.toString() + "%"]
+  );
+  return res.render("allVehicle", { dataVehicle: rows });
 };
 module.exports = {
   getAllUser,
@@ -101,4 +141,9 @@ module.exports = {
   deleteUser,
   editUser,
   updateUser,
+  editVehicle,
+  updateVehicle,
+  payment,
+  searchUser,
+  searchVehicle,
 };

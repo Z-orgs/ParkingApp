@@ -1,0 +1,43 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/update-vehicle" method="post">
+        <input type="text" name="idV" hidden value="<%= dataVehicle.idV %>">
+        <div><select name="type">
+                <% if(dataVehicle.type==="type1" ) { %>
+                    <option value="type1" selected>Xe đạp / xe điện</option>
+                    <option value="type2">Xe máy</option>
+                    <option value="type3">Oto</option>
+                    <% } else if(dataVehicle.type==="type2" ){ %>
+                        <option value="type1">Xe đạp / xe điện</option>
+                        <option value="type2" selected>Xe máy</option>
+                        <option value="type3">Oto</option>
+                        <% } else if(dataVehicle.type==="type3" ) { %>
+                            <option value="type1">Xe đạp / xe điện</option>
+                            <option value="type2">Xe máy</option>
+                            <option value="type3" selected>Oto</option>
+                            <% } %>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="license" class="form-label">Biển số xe</label>
+            <input type="text" class="form-control" name="license" value="<%= dataVehicle.license %>">
+        </div>
+        <div class=" mb-3">
+            <label for="id" class="form-label">Owner by ID</label>
+            <input type="text" class="form-control" name="id" value="<%= dataVehicle.id %>">
+        </div>
+        <div class=" col-12">
+            <button class="btn btn-primary" type="submit">save</button>
+        </div>
+    </form>
+</body>
+
+</html>
