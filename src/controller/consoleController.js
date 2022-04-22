@@ -24,10 +24,10 @@ let getDetailPageV = async (req, res) => {
   return res.render("detailV.ejs", { dataVehicle: row });
 };
 let addNewUser = async (req, res) => {
-  let { typeUser, fullName, tel, addr } = req.body;
+  let { fullName, tel, addr } = req.body;
   await pool.execute(
-    "insert into userB(fullName, inDebt, coefficient, tel, addr, typeUser) values(?, ?, ?, ?, ?, ?);",
-    [fullName, 0, typeUser === "Child" ? 1 : 1.3, tel, addr, typeUser]
+    "insert into userB(fullName, inDebt, tel, addr) values(?, ?, ?, ?);",
+    [fullName, 0, tel, addr]
   );
   return res.redirect("console");
 };
@@ -75,6 +75,20 @@ let deleteUser = async (req, res) => {
   await pool.execute("delete from userB where id = ?", [id]);
   return res.redirect("allUser");
 };
+let editUser = async (req, res) => {
+  let id = req.params.id;
+  let user = await pool.execute("select * from userB where id = ?", [id]);
+  return res.render("updateU", { dataUser: user[0][0] });
+};
+let updateUser = async (req, res) => {
+  let { typeUser, fullName, tel, addr } = req.body;
+  // await pool.execute(
+  //   "insert into userB(fullName, inDebt, coefficient, tel, addr, typeUser) values(?, ?, ?, ?, ?, ?);",
+  //   [fullName, 0, typeUser === "Child" ? 1 : 1.3, tel, addr, typeUser]
+  // );
+  console.log(req.body);
+  return res.redirect("allUser");
+};
 module.exports = {
   getAllUser,
   getDetailPageU,
@@ -85,4 +99,6 @@ module.exports = {
   addNewTurn,
   deleteVehicle,
   deleteUser,
+  editUser,
+  updateUser,
 };

@@ -16,6 +16,8 @@ const initWebRoute = (app) => {
   router.get("/detail/vehicle/:idV", consoleController.getDetailPageV);
   router.post("/add-new-user", consoleController.addNewUser);
   router.post("/add-new-vehicle", consoleController.addNewVehicle);
+  router.get("/edit-user/:id", consoleController.editUser);
+  router.post("/update-user", consoleController.updateUser);
   return app.use("/", router);
 };
 export default initWebRoute;

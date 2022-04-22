@@ -9,10 +9,8 @@ go
     id int AUTO_INCREMENT,
     fullName nvarchar(50) not NULL,
     inDebt DOUBLE,
-    coefficient FLOAT,
     tel char(10),
     addr text,
-    typeUser VARCHAR(10),
     PRIMARY KEY(id)
   )
 go
