@@ -9,6 +9,7 @@ const initWebRoute = (app) => {
   router.get("/console", (req, res) => {
     res.render("console.ejs");
   });
+  //BUG
   // router.get("/BUG", (req, res) => {
   //   res.render("BUG.ejs");
   // });
