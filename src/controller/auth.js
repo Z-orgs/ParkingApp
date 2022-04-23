@@ -46,7 +46,43 @@ let authREG = async (req, res) => {
     return res.render("BUG");
   }
 };
+let changePass = async (req, res) => {
+  try {
+    // var oldPass = req.body.oldPass;
+    var newPass = req.body.newPass;
+    var reNewPass = req.body.reNewPass;
+    var oldPass = await pool.execute(
+      "select pword from userAdmin where userA = ?",
+      [req.session.username]
+    );
+    oldPass = oldPass[0][0];
+    if (oldPass.pword == req.body.oldPass && newPass === reNewPass) {
+      await pool.execute("update userAdmin set pword = ? where userA = ?", [
+        newPass,
+        req.session.username,
+      ]);
+      return res.render("console");
+    } else {
+      return res.render("failToChangePass");
+    }
+  } catch (error) {
+    console.log(error);
+    return res.render("BUG");
+  }
+};
+let logout = (req, res) => {
+  try {
+    req.session.loggedin = false;
+    req.session.username = "";
+    return res.render("index");
+  } catch (error) {
+    console.log(error);
+    return res.render("BUG");
+  }
+};
 module.exports = {
   authLOG,
   authREG,
+  changePass,
+  logout,
 };

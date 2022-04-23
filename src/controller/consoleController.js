@@ -2,7 +2,11 @@ import full from "@babel/core/lib/config/full";
 import pool from "../configs/connectDB";
 let getAllUser = async (req, res) => {
   try {
-    const [rows, fields] = await pool.execute("SELECT * FROM userB;");
+    const username = req.session.username;
+    const [rows, fields] = await pool.execute(
+      "SELECT * FROM userB where Admin = ?",
+      [username]
+    );
     return res.render("allUser.ejs", { dataUser: rows });
   } catch (error) {
     console.log(error);
@@ -11,7 +15,11 @@ let getAllUser = async (req, res) => {
 };
 let getAllVehicle = async (req, res) => {
   try {
-    const [rows, fields] = await pool.execute("SELECT * FROM vehicle;");
+    const username = req.session.username;
+    const [rows, fields] = await pool.execute(
+      "SELECT * FROM vehicle where Admin = ?",
+      [username]
+    );
     return res.render("allVehicle.ejs", { dataVehicle: rows });
   } catch (error) {
     console.log(error);
@@ -21,10 +29,11 @@ let getAllVehicle = async (req, res) => {
 
 let getDetailPageU = async (req, res) => {
   try {
+    const username = req.session.username;
     let id = req.params.userId;
     const [row, fields] = await pool.execute(
-      "select * from userB where id = ?",
-      [id]
+      "select * from userB where id = ? AND Admin = ?",
+      [id, username]
     );
     return res.render("detailU.ejs", { dataUser: row });
   } catch (error) {
@@ -35,10 +44,11 @@ let getDetailPageU = async (req, res) => {
 };
 let getDetailPageV = async (req, res) => {
   try {
+    const username = req.session.username;
     let id = req.params.idV;
     const [row, fields] = await pool.execute(
-      "select * from vehicle where idV = ?",
-      [id]
+      "select * from vehicle where idV = ? AND Admin = ?",
+      [id, username]
     );
     return res.render("detailV.ejs", { dataVehicle: row });
   } catch (error) {
@@ -48,10 +58,11 @@ let getDetailPageV = async (req, res) => {
 };
 let addNewUser = async (req, res) => {
   try {
+    const username = req.session.username;
     let { fullName, tel, addr } = req.body;
     await pool.execute(
-      "insert into userB(fullName, inDebt, tel, addr) values(?, ?, ?, ?);",
-      [fullName, 0, tel, addr]
+      "insert into userB(fullName, inDebt, tel, addr, Admin) values(?, ?, ?, ?, ?);",
+      [fullName, 0, tel, addr, username]
     );
     return res.redirect("console");
   } catch (error) {
@@ -61,10 +72,11 @@ let addNewUser = async (req, res) => {
 };
 let addNewVehicle = async (req, res) => {
   try {
+    const username = req.session.username;
     let { typeVehicle, license, id } = req.body;
     await pool.execute(
-      "insert into vehicle(license, type, id) values(?, ?, ?);",
-      [license, typeVehicle, id]
+      "insert into vehicle(license, type, id, Admin) values(?, ?, ?, ?);",
+      [license, typeVehicle, id, username]
     );
     return res.redirect("console");
   } catch (error) {
@@ -74,10 +86,11 @@ let addNewVehicle = async (req, res) => {
 };
 let addNewTurn = async (req, res) => {
   try {
+    const username = req.session.username;
     let license = req.body.license;
     const [rows, fields] = await pool.execute(
-      "select * from vehicle where license = ?",
-      [license]
+      "select * from vehicle where license = ? AND Admin = ?",
+      [license, username]
     );
     let price =
       rows[0].type === "type1"
@@ -88,15 +101,15 @@ let addNewTurn = async (req, res) => {
         ? 50000
         : 20000;
     const [row, field] = await pool.execute(
-      "select * from userB where id = ?",
-      [rows[0].id]
+      "select * from userB where id = ? AND Admin = ?",
+      [rows[0].id, username]
     );
     let inDebt = row[0].inDebt;
     inDebt += price;
-    await pool.execute("update userB set inDebt = ? where id = ?", [
-      inDebt,
-      rows[0].id,
-    ]);
+    await pool.execute(
+      "update userB set inDebt = ? where id = ? AND Admin = ?",
+      [inDebt, rows[0].id, username]
+    );
     return res.redirect("console");
   } catch (error) {
     console.log(error);
@@ -105,8 +118,12 @@ let addNewTurn = async (req, res) => {
 };
 let deleteVehicle = async (req, res) => {
   try {
+    const username = req.session.username;
     let idV = req.body.idV;
-    await pool.execute("delete from vehicle where idV = ?", [idV]);
+    await pool.execute("delete from vehicle where idV = ? AND Admin = ?", [
+      idV,
+      username,
+    ]);
     return res.redirect("allVehicle");
   } catch (error) {
     console.log(error);
@@ -115,9 +132,16 @@ let deleteVehicle = async (req, res) => {
 };
 let deleteUser = async (req, res) => {
   try {
+    const username = req.session.username;
     let id = req.body.id;
-    await pool.execute("delete from vehicle where id = ?", [id]);
-    await pool.execute("delete from userB where id = ?", [id]);
+    await pool.execute("delete from vehicle where id = ? AND Admin = ?", [
+      id,
+      username,
+    ]);
+    await pool.execute("delete from userB where id = ? AND Admin = ?", [
+      id,
+      username,
+    ]);
     return res.redirect("allUser");
   } catch (error) {
     console.log(error);
@@ -126,8 +150,12 @@ let deleteUser = async (req, res) => {
 };
 let editUser = async (req, res) => {
   try {
+    const username = req.session.username;
     let id = req.params.id;
-    let user = await pool.execute("select * from userB where id = ?", [id]);
+    let user = await pool.execute(
+      "select * from userB where id = ? AND Admin = ?",
+      [id, username]
+    );
     return res.render("updateU", { dataUser: user[0][0] });
   } catch (error) {
     console.log(error);
@@ -136,10 +164,11 @@ let editUser = async (req, res) => {
 };
 let updateUser = async (req, res) => {
   try {
+    const username = req.session.username;
     let { id, fullName, tel, addr } = req.body;
     await pool.execute(
-      "update userB set fullName = ?, tel = ?, addr = ? where id = ?",
-      [fullName, tel, addr, id]
+      "update userB set fullName = ?, tel = ?, addr = ? where id = ? AND Admin = ?",
+      [fullName, tel, addr, id, username]
     );
     return res.redirect("allUser");
   } catch (error) {
@@ -149,10 +178,12 @@ let updateUser = async (req, res) => {
 };
 let editVehicle = async (req, res) => {
   try {
+    const username = req.session.username;
     let idV = req.params.idV;
-    let vehicle = await pool.execute("select * from vehicle where idV = ?", [
-      idV,
-    ]);
+    let vehicle = await pool.execute(
+      "select * from vehicle where idV = ? AND Admin = ?",
+      [idV, username]
+    );
     return res.render("updateV", { dataVehicle: vehicle[0][0] });
   } catch (error) {
     console.log(error);
@@ -161,10 +192,11 @@ let editVehicle = async (req, res) => {
 };
 let updateVehicle = async (req, res) => {
   try {
+    const username = req.session.username;
     let { idV, type, license, id } = req.body;
     await pool.execute(
-      "update vehicle set license = ?, type = ?, id = ? where idV = ?",
-      [license, type, id, idV]
+      "update vehicle set license = ?, type = ?, id = ? where idV = ? AND Admin = ?",
+      [license, type, id, idV, username]
     );
     return res.redirect("allVehicle");
   } catch (error) {
@@ -174,13 +206,17 @@ let updateVehicle = async (req, res) => {
 };
 let payment = async (req, res) => {
   try {
+    const username = req.session.username;
     let { money, id } = req.body;
-    let user = await pool.execute("select * from userB where id = ?", [id]);
+    let user = await pool.execute(
+      "select * from userB where id = ? AND Admin = ?",
+      [id, username]
+    );
     let newInDebt = user[0][0].inDebt - money;
-    await pool.execute("update userB set inDebt = ? where id = ?", [
-      newInDebt,
-      id,
-    ]);
+    await pool.execute(
+      "update userB set inDebt = ? where id = ? AND Admin = ?",
+      [newInDebt, id, username]
+    );
     return res.redirect("console");
   } catch (error) {
     console.log(error);
@@ -189,10 +225,11 @@ let payment = async (req, res) => {
 };
 let searchUser = async (req, res) => {
   try {
+    const username = req.session.username;
     let name = req.body.keywordName;
     const [rows, fields] = await pool.execute(
-      "select * from userB where fullName like ?",
-      ["%" + name.toString() + "%"]
+      "select * from userB where fullName like ? AND Admin = ?",
+      ["%" + name.toString() + "%", username]
     );
     return res.render("allUser", { dataUser: rows });
   } catch (error) {
@@ -202,10 +239,11 @@ let searchUser = async (req, res) => {
 };
 let searchVehicle = async (req, res) => {
   try {
+    const username = req.session.username;
     let license = req.body.keywordLicense;
     const [rows, fields] = await pool.execute(
-      "select * from vehicle where license like ?",
-      ["%" + license.toString() + "%"]
+      "select * from vehicle where license like ? AND Admin = ?",
+      ["%" + license.toString() + "%", username]
     );
     return res.render("allVehicle", { dataVehicle: rows });
   } catch (error) {

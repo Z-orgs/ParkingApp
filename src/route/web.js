@@ -11,7 +11,7 @@ const initWebRoute = (app) => {
   router.get("/home", homeController.getHomePage);
   router.get("/console", (req, res) => {
     if (req.session.loggedin) {
-      res.redirect("console");
+      res.render("console");
     } else {
       res.render("./LOG/pleaseLogin");
     }
@@ -29,18 +29,19 @@ const initWebRoute = (app) => {
   router.get("/edit-vehicle/:idV", consoleController.editVehicle);
   router.get("/login", (req, res) => {
     if (req.session.loggedin) {
-      res.redirect("console");
+      res.render("console");
     } else {
       res.render("./LOG/login");
     }
   });
   router.get("/register", (req, res) => {
     if (req.session.loggedin) {
-      res.redirect("console");
+      res.render("console");
     } else {
       res.render("./REG/register");
     }
   });
+  router.get("/logout", auth.logout);
   //post
   router.post("/delete-vehicle", consoleController.deleteVehicle);
   router.post("/delete-user", consoleController.deleteUser);
@@ -54,6 +55,7 @@ const initWebRoute = (app) => {
   router.post("/allVehicle", consoleController.searchVehicle);
   router.post("/authLOG", auth.authLOG);
   router.post("/authREG", auth.authREG);
+  router.post("/changePass", auth.changePass);
   return app.use("/", router);
 };
 export default initWebRoute;

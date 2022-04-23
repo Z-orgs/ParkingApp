@@ -23,6 +23,8 @@
                 <li class="list__item">Thanh toán</li>
                 <li class="list__item">Danh sách phương tiện</li>
                 <li class="list__item">Danh sách người dùng.</li>
+                <li class="list__item">Đổi mật khẩu</li>
+                <li class="list__item">Đăng xuất</li>
             </ul>
             <div class="form__body">
                 <div class="form__body-display active">
@@ -105,6 +107,21 @@
                 </div>
                 <div class="form__body-display">
                     <iframe src="/allUser" frameborder="0"></iframe>
+                </div>
+                <div class="form__body-display">
+                    <h2>Đổi mật khẩu</h2>
+                    <form action="changePass" method="post">
+                        <input type="password" name="oldPass" placeholder="Mật khẩu cũ" required>
+                        <input type="password" name="newPass" placeholder="Mật khẩu mới" required>
+                        <input type="password" name="reNewPass" placeholder="Nhập lại mật khẩu mới" required>
+                        <input type="submit">
+                    </form>
+                </div>
+                <div class="form__body-display">
+                    <h2>đăng xuất</h2>
+                    <form action="logout">
+                        <button type="submit">Xác nhận đăng xuất</button>
+                    </form>
                 </div>
             </div>
         </div>
