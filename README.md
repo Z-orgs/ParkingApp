@@ -2,7 +2,7 @@
 
 DEMO: https://parking-webapp.herokuapp.com/
 
-This is just a my class project, you can freely develop for it better.
+This is just my class project, you can freely develop for it better.
 
 Config:
 
