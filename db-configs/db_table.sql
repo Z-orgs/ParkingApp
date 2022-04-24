@@ -12,7 +12,8 @@ go
     tel char(10),
     addr text,
     Admin varchar(30) NOT NULL,
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    FOREIGN KEY(Admin) REFERENCES userAdmin(userA)
   )
 go
   CREATE TABLE vehicle(
@@ -22,5 +23,6 @@ go
     id int not NULL,
     Admin varchar(30) NOT NULL,
     PRIMARY KEY(idV),
-    CONSTRAINT FK_ID FOREIGN KEY(id) REFERENCES userB(id)
+    FOREIGN KEY(id) REFERENCES userB(id),
+    FOREIGN KEY(Admin) REFERENCES userAdmin(userA)
   )
