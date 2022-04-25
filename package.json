@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dimpdawzng/NewParkingWebApp.git"
+    "url": "git+https://github.com/dimpDEV/NewParkingWebApp.git"
   },
-  "author": "DIMP daArtis",
+  "author": "dimpDEV",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dimpdawzng/NewParkingWebApp/issues"
+    "url": "https://github.com/dimpDEV/NewParkingWebApp/issues"
   },
-  "homepage": "https://github.com/dimpdawzng/NewParkingWebApp#readme",
+  "homepage": "https://github.com/dimpDEV/NewParkingWebApp#readme",
   "dependencies": {
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.9",
