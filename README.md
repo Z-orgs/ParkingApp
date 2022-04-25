@@ -9,3 +9,5 @@ Config:
 - DB: ./src/configs/connectDB.js
 - View engine: ./src/configs/viewEngine.js
 - View engine source files: ./src/views
+
+#Author: dimpDEV & imdev2002
