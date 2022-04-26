@@ -56,6 +56,7 @@ const initWebRoute = (app) => {
   router.post("/authLOG", auth.authLOG);
   router.post("/authREG", auth.authREG);
   router.post("/changePass", auth.changePass);
+  router.post("/change-price", consoleController.changePrice);
   return app.use("/", router);
 };
 export default initWebRoute;

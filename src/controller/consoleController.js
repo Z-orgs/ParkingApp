@@ -87,6 +87,14 @@ let addNewVehicle = async (req, res) => {
 let addNewTurn = async (req, res) => {
   try {
     const username = req.session.username;
+    let priceType1o = await pool.execute("select priceType1 from userAdmin where userA = ?", [username]);
+    var tp1 = priceType1o[0][0].priceType1;
+    let priceType2o = await pool.execute("select priceType2 from userAdmin where userA = ?", [username]);
+    var tp2 = priceType2o[0][0].priceType2;
+    let priceType3o = await pool.execute("select priceType3 from userAdmin where userA = ?", [username]);
+    var tp3 = priceType3o[0][0].priceType3;
+    let priceType4o = await pool.execute("select priceType4 from userAdmin where userA = ?", [username]);
+    var tp4 = priceType4o[0][0].priceType4;
     let license = req.body.license;
     const [rows, fields] = await pool.execute(
       "select * from vehicle where license = ? AND Admin = ?",
@@ -94,12 +102,12 @@ let addNewTurn = async (req, res) => {
     );
     let price =
       rows[0].type === "type1"
-        ? 3000
+        ? tp1
         : rows[0].type === "type2"
-        ? 5000
-        : rows[0].type === "type3"
-        ? 50000
-        : 20000;
+          ? tp2
+          : rows[0].type === "type3"
+            ? tp3
+            : tp4;
     const [row, field] = await pool.execute(
       "select * from userB where id = ? AND Admin = ?",
       [rows[0].id, username]
@@ -251,6 +259,17 @@ let searchVehicle = async (req, res) => {
     return res.render("BUG");
   }
 };
+let changePrice = async (req, res) => {
+  try {
+    const username = req.session.username;
+    let { priceType1, priceType2, priceType3, priceType4 } = req.body;
+    await pool.execute("update userAdmin set priceType1 = ?, priceType2 = ?, priceType3 = ?, priceType4 =? where userA = ?", [priceType1, priceType2, priceType3, priceType4, username]);
+    return res.render("console");
+  } catch (error) {
+    console.log(error)
+    return res.render("BUG");
+  }
+};
 module.exports = {
   getAllUser,
   getDetailPageU,
@@ -268,4 +287,5 @@ module.exports = {
   payment,
   searchUser,
   searchVehicle,
+  changePrice,
 };

@@ -24,6 +24,7 @@
                 <li class="list__item">Danh sách phương tiện</li>
                 <li class="list__item">Danh sách người dùng.</li>
                 <li class="list__item">Đổi mật khẩu</li>
+                <li class="list__item">Chỉnh sửa giá vé</li>
                 <li class="list__item">Đăng xuất</li>
             </ul>
             <div class="form__body">
@@ -115,6 +116,21 @@
                         <input type="password" name="newPass" placeholder="Mật khẩu mới" required>
                         <input type="password" name="reNewPass" placeholder="Nhập lại mật khẩu mới" required>
                         <input type="submit">
+                    </form>
+                </div>
+                <div class="form__body-display">
+                    <h2>Chỉnh sửa giá vé</h2>
+                    <form action="change-price" method="post">
+                        <label for="priceType1">Giá vé xe đạp / xe điện</label>
+                        <input type="text" name="priceType1" placeholder="3000" required><br>
+                        <label for="priceType2">Giá vé xe máy</label>
+                        <input type="text" name="priceType2" placeholder="5000" required><br>
+                        <label for="priceType3">Giá vé xe oto</label>
+                        <input type="text" name="priceType3" placeholder="50000" required><br>
+                        <label for="priceType4">Giá vé các loại xe khác</label>
+                        <input type="text" name="priceType4" placeholder="20000" required><br>
+                        <input type="submit" value="Save">
+                        <input type="reset" value="Reset">
                     </form>
                 </div>
                 <div class="form__body-display">
