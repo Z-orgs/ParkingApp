@@ -15,4 +15,4 @@ Note:
 
 #Author: dimpDEV & imdev2002
 
-We are designing the frontend by lazy way.
+We are redesigning the view engine source files by lazy way.
