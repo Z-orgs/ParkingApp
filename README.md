@@ -6,7 +6,7 @@ This is just my class project, you can freely develop for it better.
 
 Config:
 
-- DB: ./src/configs/connectDB.js
+- DB: ./src/configs/JSON/database.json
 - View engine: ./src/configs/viewEngine.js
 - View engine source files: ./src/views
 

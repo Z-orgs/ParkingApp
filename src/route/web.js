@@ -17,10 +17,6 @@ const initWebRoute = (app) => {
     }
     res.end();
   });
-  //BUG
-  // router.get("/BUG", (req, res) => {
-  //   res.render("BUG.ejs");
-  // });
   router.get("/allUser", consoleController.getAllUser);
   router.get("/allVehicle", consoleController.getAllVehicle);
   router.get("/detail/user/:userId", consoleController.getDetailPageU);

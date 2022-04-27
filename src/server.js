@@ -16,5 +16,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 3000;
 configViewEngine(app);
 initWebRoute(app);
-
+app.use((req, res) => {
+  return res.render("404");
+});
 app.listen(PORT);
