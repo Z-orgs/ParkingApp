@@ -1,8 +1,19 @@
 import pool from "../configs/connectDB";
+String.prototype.hashCode = function () {
+  var hash = 0, i, chr;
+  if (this.length === 0) return hash;
+  for (i = 0; i < this.length; i++) {
+    chr = this.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0;
+  }
+  return hash;
+};
 let authLOG = async (req, res) => {
   try {
     var userA = req.body.username;
     var pword = req.body.password;
+    pword = pword.hashCode();
     const [rows, fields] = await pool.execute(
       "select * from userAdmin where userA = ? AND pword = ?",
       [userA, pword]
@@ -24,9 +35,11 @@ let authREG = async (req, res) => {
     var userA = req.body.username;
     var pword = req.body.password;
     var cpword = req.body.confirmPassword;
+    pword = pword.hashCode();
+    cpword = cpword.hashCode();
     if (pword !== cpword) {
       return res.render("./REG/pwNoSame");
-    } else {
+    } else if (pword === cpword) {
       const [rows, fields] = await pool.execute(
         "select * from userAdmin where userA = ?",
         [userA]
