@@ -1,5 +1,21 @@
 import full from "@babel/core/lib/config/full";
 import pool from "../configs/connectDB";
+
+let getConsolePage = async (req, res) => {
+  try {
+    if (req.session.loggedin) {
+      const username = req.session.username;
+      var user = { "username": username };
+      console.log(user);
+      return res.render("console", { user: user });
+    } else {
+      res.render("./LOG/pleaseLogin");
+    }
+  } catch (error) {
+    console.log(error);
+    return res.render("BUG");
+  }
+};
 let getAllUser = async (req, res) => {
   try {
     const username = req.session.username;
@@ -266,7 +282,7 @@ let changePrice = async (req, res) => {
     await pool.execute("update userAdmin set priceType1 = ?, priceType2 = ?, priceType3 = ?, priceType4 =? where userA = ?", [priceType1, priceType2, priceType3, priceType4, username]);
     return res.render("console");
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res.render("BUG");
   }
 };
@@ -288,4 +304,5 @@ module.exports = {
   searchUser,
   searchVehicle,
   changePrice,
+  getConsolePage
 };

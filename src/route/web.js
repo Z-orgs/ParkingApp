@@ -9,14 +9,7 @@ const initWebRoute = (app) => {
   //get
   router.get("/", homeController.getHomePage);
   router.get("/home", homeController.getHomePage);
-  router.get("/console", (req, res) => {
-    if (req.session.loggedin) {
-      res.render("console");
-    } else {
-      res.render("./LOG/pleaseLogin");
-    }
-    res.end();
-  });
+  router.get("/console", consoleController.getConsolePage);
   router.get("/allUser", consoleController.getAllUser);
   router.get("/allVehicle", consoleController.getAllVehicle);
   router.get("/detail/user/:userId", consoleController.getDetailPageU);
