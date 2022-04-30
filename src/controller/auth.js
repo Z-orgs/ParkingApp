@@ -69,8 +69,7 @@ let changePass = async (req, res) => {
       [req.session.username]
     );
     oldPass = oldPass[0][0];
-    oldPass = oldPass.hashCode();
-    if (oldPass.pword === req.body.oldPass && newPass === reNewPass) {
+    if (oldPass.pword.hashCode() === req.body.oldPass && newPass === reNewPass) {
       await pool.execute("update userAdmin set pword = ? where userA = ?", [
         newPass,
         req.session.username,
