@@ -62,14 +62,15 @@ let authREG = async (req, res) => {
 let changePass = async (req, res) => {
   try {
     // var oldPass = req.body.oldPass;
-    var newPass = req.body.newPass;
-    var reNewPass = req.body.reNewPass;
+    var newPass = req.body.newPass.hashCode();
+    var reNewPass = req.body.reNewPass.hashCode();
     var oldPass = await pool.execute(
       "select pword from userAdmin where userA = ?",
       [req.session.username]
     );
     oldPass = oldPass[0][0];
-    if (oldPass.pword == req.body.oldPass && newPass === reNewPass) {
+    oldPass = oldPass.hashCode();
+    if (oldPass.pword === req.body.oldPass && newPass === reNewPass) {
       await pool.execute("update userAdmin set pword = ? where userA = ?", [
         newPass,
         req.session.username,
