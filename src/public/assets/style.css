@@ -1,7 +1,8 @@
-.block {
-  max-width: 1200px;
-  margin: 0 auto;
+/* HOME PAGE */
+.app {
+  overflow: hidden;
 }
+
 .header{
   max-width: 1200px;
   margin: 0 auto;
@@ -80,6 +81,7 @@
 .background img {
   transform: translate(-10px, -20px) rotate(5deg);
   animation: animated 5s linear infinite alternate;
+  width: 100%;
 }
 .footer {
   min-height: 10vh;
@@ -104,4 +106,119 @@
 .signIn:hover {
   background: #27ae60;
   color: #fff;
+}
+
+
+
+/* LOGIN PAGE & REGISTER PAGE*/
+.wrapper-login {
+  background: #2980b9;
+}
+
+.form-container {
+  justify-content: space-between;
+  align-items: center;
+  top: 50%;
+  position: fixed;
+  width: 50%;
+  margin: 0 auto;
+  min-height: 70vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 15px 15px -15px rgb(0 0 0 / 70%);
+  border-radius: 8px;
+  display: flex;
+  padding: 0 60px;
+}
+.login-container {
+  background: linear-gradient(95deg, #fff, #fff 45%, #2ecc71 45%, #2ecc71);
+}
+.form-container-l {
+  max-width: 50%;
+}
+
+.form-illustration {
+    width: 100%;
+    display: block;
+}
+
+.back-to-home {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  padding: 4px 8px 4px 0;
+}
+.back-to-home__icon {
+  padding-right: 4px;
+}
+
+.form-block {
+  width: 275px;
+  right: 8%;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 2px 15px 15px -15px rgb(0 0 0 / 70%);
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0;
+  box-shadow: 0 0.0625rem 1.125rem 0 rgb(0 0 0 / 10%);
+}
+
+.form-header__msg {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: #27ae60;
+  padding-left: 10px;
+}
+
+.form-header__link {
+  text-decoration: none;
+  font-size: 12px;
+  color: #2980b9;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.login-form {
+  background: #ffffff6b;
+  padding: 10px;
+}
+
+.login-btn,
+.register-btn {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  background: #2ecc71;
+}
+.login-btn:hover {
+  background: #27ae60;
+}
+
+.wrapper-register {
+  background: #2ecc71;
+}
+.register-container {
+  background: linear-gradient(85deg, #fff, #fff 45%, var(--primary-color) 45%, var(--primary-color));
+}
+.register-btn {
+  background: #3498db;
+}
+.register-btn:hover {
+  background: #2980b9;
+}
+.register-color {
+  color: var(--primary-color);
+}
+.login-color {
+  color: #27ae60;
 }

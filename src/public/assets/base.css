@@ -149,6 +149,7 @@ html {
   cursor: pointer;
   font-size: 18px;
   text-decoration: none;
+  width: 100%;
 }
 
 .btn:hover {
@@ -166,4 +167,17 @@ html {
     {
         transform: translate(10px, 20px);
     }
+}
+
+input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+padding: 15px;
+margin-bottom: 15px;
+}
+
+input::placeholder {
+  color: rgb(165, 161, 161);
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -54,4 +54,67 @@
     </div>
 </body>
 
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/responsive.css">
+</head>
+<body>
+    <div class="login-page">
+        <div class="wrapper wrapper-register">
+            <ul class="bg-bubbles">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+        </div>
+        <div class="form-container register-container">
+            <div class="form-container-l">
+                <img src="/assets/images/register.png" alt="" class="form-illustration">
+            </div>
+            <div class="form-container-r">
+                <a href="/" class="back-to-home">
+                    <i class="fa-solid fa-angle-left back-to-home__icon"></i>
+                    Home
+                </a>
+                <div class="form-block">
+                    <div class="form-header">
+                        <p class="form-header__msg register-color">Create an account</p>
+                        <a class="form-header__link login-color" href="/login">
+                            <i class="fa-solid fa-user"></i>
+                            Sign In
+                        </a>
+                    </div>
+                    <form class="login-form" action="authLOG" method="POST">
+                        <form action="authREG" method="POST">
+                            <input type="text" name="username" placeholder="Username" required>
+                            <input type="password" name="password" placeholder="Password" required>
+                            <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+                            <input type="submit" class="btn register-btn" value="Register">
+                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
