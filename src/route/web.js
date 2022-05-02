@@ -17,11 +17,18 @@ const initWebRoute = (app) => {
   router.get("/edit-user/:id", consoleController.editUser);
   router.get("/edit-vehicle/:idV", consoleController.editVehicle);
   router.get("/login", (req, res) => {
-    if (req.session.loggedin) {
-      res.render("console");
-    } else {
-      res.render("./LOG/login");
+    try {
+      if (req.session.loggedin) {
+        res.render("console");
+      } else {
+        res.render("./LOG/login");
+      }
+    } catch (error) {
+      req.session.loggedin = false;
+      req.session.username = "";
+      return res.redirect("login");
     }
+
   });
   router.get("/register", (req, res) => {
     if (req.session.loggedin) {
