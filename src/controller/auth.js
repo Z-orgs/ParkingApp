@@ -19,7 +19,7 @@ let authLOG = async (req, res) => {
       [userA, pword]
     );
     if (rows.length == 0) {
-      return res.render("./LOG/failToLogin");
+      return res.render("./LOG/login");
     } else {
       req.session.loggedin = true;
       req.session.username = userA;

@@ -9,7 +9,7 @@ let getConsolePage = async (req, res) => {
       console.log(user);
       return res.render("console", { user: user });
     } else {
-      res.render("./LOG/pleaseLogin");
+      res.redirect("login");
     }
   } catch (error) {
     console.log(error);
