@@ -10,8 +10,8 @@ const PORT = process.env.PORT || 3000;
 app.use(
   session({
     secret: "secret",
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
   })
 );
 app.use(express.urlencoded({ extended: true }));
