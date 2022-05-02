@@ -17,13 +17,7 @@ const initWebRoute = (app) => {
   router.get("/edit-user/:id", consoleController.editUser);
   router.get("/edit-vehicle/:idV", consoleController.editVehicle);
   router.get("/login", consoleController.getLoginPage);
-  router.get("/register", (req, res) => {
-    if (req.session.loggedin) {
-      res.render("console");
-    } else {
-      res.render("./REG/register");
-    }
-  });
+  router.get("/register", consoleController.getRegPage);
   router.get("/logout", auth.logout);
   //post
   router.post("/delete-vehicle", consoleController.deleteVehicle);

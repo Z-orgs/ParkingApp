@@ -301,6 +301,20 @@ let getLoginPage = function (req, res) {
     return res.redirect("login");
   }
 };
+let getRegPage = function (req, res) {
+  try {
+    if (req.session.loggedin) {
+      const username = req.session.username;
+      var user = { "username": username };
+      return res.render("console", { user: user });
+    } else {
+      res.render("./REG/register");
+    }
+  } catch (error) {
+    console.log(error);
+    return res.render("BUG");
+  }
+};
 module.exports = {
   getAllUser,
   getDetailPageU,
@@ -321,4 +335,5 @@ module.exports = {
   changePrice,
   getConsolePage,
   getLoginPage,
+  getRegPage
 };
