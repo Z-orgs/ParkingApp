@@ -287,6 +287,20 @@ let changePrice = async (req, res) => {
     return res.render("BUG");
   }
 };
+let getLoginPage = function (req, res) {
+  try {
+    if (req.session.loggedin) {
+      const username = req.session.username;
+      var user = { "username": username };
+      console.log(user);
+      return res.render("console", { user: user });
+    } else {
+      res.render("./LOG/login");
+    }
+  } catch (error) {
+    return res.redirect("login");
+  }
+};
 module.exports = {
   getAllUser,
   getDetailPageU,
@@ -305,5 +319,6 @@ module.exports = {
   searchUser,
   searchVehicle,
   changePrice,
-  getConsolePage
+  getConsolePage,
+  getLoginPage,
 };

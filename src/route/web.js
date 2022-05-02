@@ -16,20 +16,7 @@ const initWebRoute = (app) => {
   router.get("/detail/vehicle/:idV", consoleController.getDetailPageV);
   router.get("/edit-user/:id", consoleController.editUser);
   router.get("/edit-vehicle/:idV", consoleController.editVehicle);
-  router.get("/login", (req, res) => {
-    try {
-      if (req.session.loggedin) {
-        res.render("console");
-      } else {
-        res.render("./LOG/login");
-      }
-    } catch (error) {
-      req.session.loggedin = false;
-      req.session.username = "";
-      return res.redirect("login");
-    }
-
-  });
+  router.get("/login", consoleController.getLoginPage);
   router.get("/register", (req, res) => {
     if (req.session.loggedin) {
       res.render("console");
