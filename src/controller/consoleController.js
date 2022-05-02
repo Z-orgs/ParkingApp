@@ -13,6 +13,8 @@ let getConsolePage = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
+    req.session.loggedin = false;
+    req.session.username = "";
     return res.render("BUG");
   }
 };
@@ -54,7 +56,6 @@ let getDetailPageU = async (req, res) => {
     return res.render("detailU.ejs", { dataUser: row });
   } catch (error) {
     console.log(error);
-    return res.render("BUG");
     return res.render("BUG");
   }
 };
