@@ -74,8 +74,7 @@ let changePass = async (req, res) => {
         newPass,
         req.session.username,
       ]);
-      var user = { "username": username };
-      return res.render("console", { user: user });
+      return res.redirect("/console");
     } else {
       return res.render("failToChangePass");
     }
@@ -88,7 +87,7 @@ let logout = (req, res) => {
   try {
     req.session.loggedin = false;
     req.session.username = "";
-    return res.render("index");
+    return res.redirect("/");
   } catch (error) {
     console.log(error);
     return res.render("BUG");

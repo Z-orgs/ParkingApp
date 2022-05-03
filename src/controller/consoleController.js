@@ -6,7 +6,6 @@ let getConsolePage = async (req, res) => {
     if (req.session.loggedin) {
       const username = req.session.username;
       var user = { "username": username };
-      console.log(user);
       return res.render("console", { user: user });
     } else {
       res.redirect("login");
