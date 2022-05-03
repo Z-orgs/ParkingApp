@@ -281,8 +281,7 @@ let changePrice = async (req, res) => {
     const username = req.session.username;
     let { priceType1, priceType2, priceType3, priceType4 } = req.body;
     await pool.execute("update userAdmin set priceType1 = ?, priceType2 = ?, priceType3 = ?, priceType4 =? where userA = ?", [priceType1, priceType2, priceType3, priceType4, username]);
-    var user = { "username": username };
-    return res.render("console", { user: user });
+    return res.redirect("/console");
   } catch (error) {
     console.log(error);
     return res.render("BUG");
@@ -291,9 +290,7 @@ let changePrice = async (req, res) => {
 let getLoginPage = function (req, res) {
   try {
     if (req.session.loggedin) {
-      const username = req.session.username;
-      var user = { "username": username };
-      return res.render("console", { user: user });
+      return res.redirect("/console");
     } else {
       res.render("./LOG/login");
     }
@@ -304,9 +301,7 @@ let getLoginPage = function (req, res) {
 let getRegPage = function (req, res) {
   try {
     if (req.session.loggedin) {
-      const username = req.session.username;
-      var user = { "username": username };
-      return res.render("console", { user: user });
+      return res.redirect("/console");
     } else {
       res.render("./REG/register");
     }
