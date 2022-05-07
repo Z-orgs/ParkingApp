@@ -9,15 +9,15 @@ const initWebRoute = (app) => {
   //get
   router.get("/", homeController.getHomePage);
   router.get("/home", homeController.getHomePage);
-  router.get("/console", consoleController.getConsolePage);
+  router.get("/console", homeController.getConsolePage);
   router.get("/allUser", consoleController.getAllUser);
   router.get("/allVehicle", consoleController.getAllVehicle);
   router.get("/detail/user/:userId", consoleController.getDetailPageU);
   router.get("/detail/vehicle/:idV", consoleController.getDetailPageV);
   router.get("/edit-user/:id", consoleController.editUser);
   router.get("/edit-vehicle/:idV", consoleController.editVehicle);
-  router.get("/login", consoleController.getLoginPage);
-  router.get("/register", consoleController.getRegPage);
+  router.get("/login", homeController.getLoginPage);
+  router.get("/register", homeController.getRegPage);
   router.get("/logout", auth.logout);
   //post
   router.post("/delete-vehicle", consoleController.deleteVehicle);
