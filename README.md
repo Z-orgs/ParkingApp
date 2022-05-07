@@ -13,4 +13,4 @@ Config:
 
 We are redesigning the view engine source files by lazy way.
 
-We have some bugs in detailU, detailV, editU and editV. We will fix it after the frontend is done.
+We have some bugs in detailU, detailV. We will fix it after the frontend is done.
