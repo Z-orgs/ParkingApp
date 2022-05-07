@@ -1,5 +1,4 @@
 let getHomePage = (req, res) => {
-  //logic
   return res.render("index.ejs");
 };
 let getLoginPage = function (req, res) {
