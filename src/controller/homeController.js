@@ -31,7 +31,7 @@ let getConsolePage = async (req, res) => {
       var user = { "username": username };
       return res.render("console", { user: user });
     } else {
-      res.redirect("login");
+      return res.redirect("login");
     }
   } catch (error) {
     console.log(error);
