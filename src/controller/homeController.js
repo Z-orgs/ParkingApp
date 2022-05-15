@@ -17,7 +17,7 @@ let getRegPage = function (req, res) {
     if (req.session.loggedin) {
       return res.redirect("/console");
     } else {
-      res.render("./REG/register");
+      return res.render("./REG/register");
     }
   } catch (error) {
     console.log(error);
