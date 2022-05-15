@@ -6,7 +6,7 @@ let getLoginPage = function (req, res) {
     if (req.session.loggedin) {
       return res.redirect("/console");
     } else {
-      res.render("./LOG/login");
+      return res.render("./LOG/login");
     }
   } catch (error) {
     return res.redirect("login");
