@@ -8,7 +8,7 @@ let router = express.Router();
 const initWebRoute = (app) => {
   //get
   router.get("/", homeController.getHomePage);
-  router.get("/home", homeController.getHomePage);
+  // router.get("/home", homeController.getHomePage);
   router.get("/console", homeController.getConsolePage);
   router.get("/allUser", consoleController.getAllUser);
   router.get("/allVehicle", consoleController.getAllVehicle);
