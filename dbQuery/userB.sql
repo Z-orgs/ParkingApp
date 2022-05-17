@@ -7,4 +7,4 @@ CREATE TABLE userB(
 	Admin varchar(1000) NOT NULL,
 	PRIMARY KEY(id),
 	FOREIGN KEY(Admin) REFERENCES userAdmin(userA)
-)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

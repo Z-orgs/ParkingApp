@@ -7,4 +7,4 @@ CREATE TABLE userAdmin(
 	priceType3 int DEFAULT 50000,
 	priceType4 int DEFAULT 20000,
 	PRIMARY KEY(idAdmin, userA)
-)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

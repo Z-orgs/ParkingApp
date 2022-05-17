@@ -7,4 +7,4 @@ CREATE TABLE vehicle(
 	PRIMARY KEY(idV),
 	FOREIGN KEY(id) REFERENCES userB(id),
 	FOREIGN KEY(Admin) REFERENCES userAdmin(userA)
-)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
