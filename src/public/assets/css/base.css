@@ -1,0 +1,360 @@
+:root {
+  --primary-color: #2980b9;
+  --white-color: #fff;
+  --text-color: #717889;
+  --height-console-header: 50px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+iframe {
+  width: 100%;
+  height: 100vh;
+}
+
+
+/* background    */
+.wrapper {
+  background: linear-gradient(to bottom, #ffffff 0%, #3498db 100%);
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.bg-bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.bg-bubbles li {
+  position: absolute;
+  list-style: none;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.15);
+  bottom: -160px;
+  -webkit-animation: square 25s infinite;
+  animation: square 25s infinite;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+}
+.bg-bubbles li:nth-child(1) {
+  left: 10%;
+}
+.bg-bubbles li:nth-child(2) {
+  left: 20%;
+  width: 80px;
+  height: 80px;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 17s;
+          animation-duration: 17s;
+}
+.bg-bubbles li:nth-child(3) {
+  left: 25%;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+.bg-bubbles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation-duration: 22s;
+          animation-duration: 22s;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+.bg-bubbles li:nth-child(5) {
+  left: 70%;
+}
+.bg-bubbles li:nth-child(6) {
+  left: 80%;
+  width: 120px;
+  height: 120px;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.bg-bubbles li:nth-child(7) {
+  left: 32%;
+  width: 160px;
+  height: 160px;
+  -webkit-animation-delay: 7s;
+          animation-delay: 7s;
+}
+.bg-bubbles li:nth-child(8) {
+  left: 55%;
+  width: 20px;
+  height: 20px;
+  -webkit-animation-delay: 15s;
+          animation-delay: 15s;
+  -webkit-animation-duration: 40s;
+          animation-duration: 40s;
+}
+.bg-bubbles li:nth-child(9) {
+  left: 25%;
+  width: 10px;
+  height: 10px;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 40s;
+          animation-duration: 40s;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.bg-bubbles li:nth-child(10) {
+  left: 90%;
+  width: 160px;
+  height: 160px;
+  -webkit-animation-delay: 11s;
+          animation-delay: 11s;
+}
+@-webkit-keyframes square {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-700px) rotate(600deg);
+            transform: translateY(-700px) rotate(600deg);
+  }
+}
+@keyframes square {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-700px) rotate(600deg);
+            transform: translateY(-700px) rotate(600deg);
+  }
+}
+
+
+
+
+.btn {
+  padding: 16px 36px;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  background: #3498db;
+  cursor: pointer;
+  font-size: 18px;
+  text-decoration: none;
+  width: 100%;
+}
+
+.btn:hover {
+  background: var(--primary-color);
+  transition: all ease-in 0.3s;
+}
+
+@keyframes animated
+{
+    0%
+    {
+        transform: translate(-10px, -20px);
+    }
+    100%
+    {
+        transform: translate(10px, 20px);
+    }
+}
+
+input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: rgb(165, 161, 161);
+}
+
+
+/* CUSTOM SELEC TAG */
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  font-size: 16px;
+  margin: 15px 0;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: #fff;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: var(--text-color) transparent transparent transparent;
+  right: 15px;
+  transform: translateY(3px);
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent var(--text-color) transparent;
+  right: 15px;
+  
+  transform: translateY(-3px);
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  
+  color: var(--text-color);
+  padding: 15px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: #fff;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* From uiverse.io */
+.button {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background: #27ae60;
+  justify-content: center;
+  position: relative;
+  margin: 20px;
+ }
+ 
+ .button, .button span {
+  transition: 200ms;
+ }
+
+ /* BUTTON STYLE */
+ 
+ .button .text {
+  color: white;
+  font-weight: bold;
+  transform: translateX(-20px);
+  font-size: 16px;
+ }
+ 
+ .button .icon {
+  position: absolute;
+  border-left: 1px solid #fff;
+  right: 0;
+  color: #fff;
+  font-size: 18px;
+  width: 40px;
+  justify-content: center;
+ }
+ 
+ 
+ .button:hover {
+  background: #22a157;
+ }
+ 
+ .button:hover .text {
+  color: transparent;
+ }
+ 
+ .button:hover .icon {
+  border-left: none;
+  right: 50%;
+  transform: translateX(50%);
+
+ }
+ 
+ .button:focus {
+  outline: none;
+ }
+ 
+ .button:active .icon i {
+  transform: scale(0.8);
+ }
+
+ .center-line {
+   display: flex;
+   justify-content: center;
+ }
+
+ .btns {
+  display: flex;
+}
+
+.btn-inverser-effect {
+  background: #778ca3;
+}
+
+.btn-inverser-effect:hover {
+  background: #4b6584;
+ }
+
+.btn-inverser-effect .text {
+  transform: translateX(20px);
+}
+
+
+.btn-inverser-effect .icon {
+  border-left: none;
+  border-right: 1px solid #fff;
+  left: 0;
+ }
+
+ .btn-inverser-effect:hover .icon {
+  border-right: none;
+  left: 50%;
+  transform: translateX(-50%);
+
+ }

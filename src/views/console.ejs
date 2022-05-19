@@ -1,168 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/app.css">
+    <title>Parking App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> -->
+    <link rel="stylesheet" href="./assets/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
 </head>
-
 <body>
-    <input type="checkbox" id="show-modal" hidden>
-    <label for="show-modal" class="btn btn-main">Xin chao <%= user.username%></label>
-    <div class="modal">
-        <label for="show-modal" class="times">&times;</label>
-        <div class="form">
-            <ul class="list">
-                <li class="list__item active">Thêm lượt gửi xe</li>
-                <li class="list__item">Thêm người dùng.</li>
-                <li class="list__item">Thêm phương tiện.</li>
-                <li class="list__item">Thanh toán</li>
-                <li class="list__item">Danh sách phương tiện</li>
-                <li class="list__item">Danh sách người dùng.</li>
-                <li class="list__item">Đổi mật khẩu</li>
-                <li class="list__item">Chỉnh sửa giá vé</li>
-                <li class="list__item">Đăng xuất</li>
+    <div class="app">
+        <div class="wrapper wrapper-login">
+            <ul class="bg-bubbles">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+        </div>
+        <div class="header console-header">
+            <div class="header-l">
+                
+                <a href="/" class="header-l__logo">
+                    <img src="./assets/images/logo.png" alt="">
+                    <h3 class="header-l__title">PARKING APP</h3>
+                </a>
+            </div>
+
+
+            <div class="header-r">
+                <div class="header__user">
+                    <input type="checkbox" id="show-user-control" hidden>
+                    <label for="show-user-control" class="modal modal-transparent"></label>
+                    <label for="show-user-control" class="header__user-name"><%= user.username%></label>
+                    <ul class="header__user-control">
+                        <label for="show-modal">
+                            <li for="show-modal" class="header__user-control-item">
+                                <i class="fa-solid fa-arrows-rotate header__user-control-item-icon"></i>
+                                Password
+                            </li>
+                        </label>   
+                        <form action="logout">
+                            <button type="submit" class="btn-logout">
+                                <li class="header__user-control-item">
+                                    <i class="fa-solid fa-power-off header__user-control-item-icon"></i>
+                                    Sign Out
+                                </li>
+                            </button>
+                            </form>
+                            
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="app__container">
+            <input type="checkbox" id="show-modal" hidden>
+            <div class="modal">
+                <label for="show-modal" class="times">&times;</label>
+                <div class="change-password-screen">
+                    <h2 class="tab-title">Change Password</h2>
+                    <form action="changePass" method="post">
+                        <input type="password" name="oldPass" placeholder="Old password" required>
+                        <input type="password" name="newPass" placeholder="New password" required>
+                        <input type="password" name="reNewPass" placeholder="corfirm your new password" required>
+                        <div class="center-line">
+                            <button class="button noselect btn-in-tab" type="submit">
+                                <span class="text">Change</span>
+                                <span class="icon">
+                                    <i class="fa-solid fa-arrows-rotate"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <ul class="dashboard">
+                <li class="dashboard__item active">
+                    <i class="fa-solid fa-layer-plus dashboard__item-icon"></i>
+                    add parking turn
+                </li>
+                <li class="dashboard__item">
+                    <i class="fa-solid fa-images-user dashboard__item-icon"></i>
+                    add user
+                </li>
+                <li class="dashboard__item">
+                    <i class="fa-solid fa-car-bus dashboard__item-icon"></i>
+                    add vehicle
+                </li>
+                <li class="dashboard__item">
+                    <i class="fa-solid fa-credit-card dashboard__item-icon"></i>
+                    Pay
+                </li>
+                <li class="dashboard__item">
+                    <i class="fa-solid fa-rectangle-list dashboard__item-icon"></i>
+                    vehicles list 
+                </li>
+                <li class="dashboard__item">
+                    <i class="fa-solid fa-table-list dashboard__item-icon"></i>
+                    users list
+                </li>
+                <li class="dashboard__item">
+                    <i class="fa-solid fa-pen-to-square dashboard__item-icon"></i>
+                    edit ticket price
+                </li>
+                <div class="dashboard__line"></div>
             </ul>
             <div class="form__body">
                 <div class="form__body-display active">
-                    <h2>Thêm lượt gửi xe</h2>
+                    <h2 class="tab-title">Add Parking Turn</h2>
                     <form action="add-new-turn" method="post">
                         <div class="mb-3">
-                            <label for="license" class="form-label">Nhập biển số xe</label>
+                            <label for="license" class="form-label">License plate</label>
                             <input type="text" class="form-control" name="license"
                                 placeholder="Example input placeholder">
                         </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Submit</button>
+                        <div class="center-line">
+                            <button class="button noselect btn-in-tab" type="submit">
+                                <span class="text">Submit</span>
+                                <span class="icon">
+                                  <i class="fa-solid fa-paper-plane"></i>
+                                </span>
+                            </button>
                         </div>
                     </form>
                 </div>
                 <div class="form__body-display">
-                    <h2>Thêm người dùng</h2>
+                    <h2 class="tab-title">Add User</h2>
                     <form action="add-new-user" method="post">
                         <div class="mb-3">
-                            <label for="fullName" class="form-label">Nhập họ tên người dùng</label>
+                            <label for="fullName" class="form-label">Full name</label>
                             <input type="text" class="form-control" name="fullName"
                                 placeholder="Example input placeholder">
                         </div>
                         <div class="mb-3">
-                            <label for="tel" class="form-label">Nhập số điện thoại</label>
+                            <label for="tel" class="form-label">Phone number</label>
                             <input type="text" class="form-control" name="tel" placeholder="Another input placeholder">
                         </div>
                         <div class="mb-3">
-                            <label for="addr" class="form-label">Nhập địa chỉ</label>
+                            <label for="addr" class="form-label">Address</label>
                             <input type="text" class="form-control" name="addr" placeholder="Another input placeholder">
                         </div>
-                        <button class="btn btn-primary" type="submit">Submit
-                            form</button>
-                        <div class="col-12">
+                        <div class="center-line">
+                            <button class="button noselect btn-in-tab" type="submit">
+                                <span class="text">Submit</span>
+                                <span class="icon">
+                                  <i class="fa-solid fa-paper-plane"></i>
+                                </span>
+                              </button>
+                        
                         </div>
                     </form>
                 </div>
                 <div class="form__body-display">
-                    <h2>Thêm phương tiện.</h2>
+                    <h2 class="tab-title">Add Vehicle</h2>
                     <form action="add-new-vehicle" method="post">
-                        <div><select name="typeVehicle" id="typeOfUser">
+                        <div style="width: 100%; background: #fff;"  class="custom-select">
+                            <select name="typeVehicle" id="typeOfUser">
+                                <option value="type0">Choose vehicle type</option>
                                 <option value="type1">Xe đạp / xe điện</option>
                                 <option value="type2">Xe máy</option>
                                 <option value="type3">Oto</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="license" class="form-label">Biển số xe</label>
-                            <input type="text" class="form-control" name="license"
-                                placeholder="Example input placeholder">
+                            <label for="license" class="form-label">License plate</label>
+                            <input type="text" class="form-control" name="license" placeholder="Example input placeholder">
                         </div>
                         <div class="mb-3">
                             <label for="id" class="form-label">Owner by ID</label>
                             <input type="text" class="form-control" name="id" placeholder="Another input placeholder">
                         </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Submit
-                                form</button>
+                        <div class="center-line">
+                            <button class="button noselect btn-in-tab" type="submit">
+                                <span class="text">Submit</span>
+                                <span class="icon">
+                                  <i class="fa-solid fa-paper-plane"></i>
+                                </span>
+                            </button>
                         </div>
                     </form>
                 </div>
                 <div class="form__body-display">
-                    <h2>Thanh toán</h2>
+                    <h2 class="tab-title">Pay</h2>
                     <form action="pay-user" method="post">
                         <div class="mb-3">
-                            <label for="money" class="form-label">Số tiền</label>
+                            <label for="money" class="form-label">Cost</label>
                             <input type="text" class="form-control" name="money">
                         </div>
                         <div class="mb-3">
                             <label for="id" class="form-label">ID</label>
                             <input type="text" class="form-control" name="id">
                         </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Thanh toán</button>
+                        <div class="center-line">
+                            <button class="button noselect btn-in-tab" type="submit">
+                                <span class="text">Pay now</span>
+                                <span class="icon">
+                                    <i class="fa-solid fa-paper-plane-top"></i>
+                                </span>
+                            </button>
                         </div>
                     </form>
                 </div>
-                <div class="form__body-display">
+                <div class="form__body-display display-with-iframe">
                     <iframe src="/allVehicle" frameborder="0"></iframe>
                 </div>
-                <div class="form__body-display">
+                <div class="form__body-display display-with-iframe">
                     <iframe src="/allUser" frameborder="0"></iframe>
                 </div>
                 <div class="form__body-display">
-                    <h2>Đổi mật khẩu</h2>
-                    <form action="changePass" method="post">
-                        <input type="password" name="oldPass" placeholder="Mật khẩu cũ" required>
-                        <input type="password" name="newPass" placeholder="Mật khẩu mới" required>
-                        <input type="password" name="reNewPass" placeholder="Nhập lại mật khẩu mới" required>
-                        <input type="submit">
-                    </form>
-                </div>
-                <div class="form__body-display">
-                    <h2>Chỉnh sửa giá vé</h2>
+                    <h2 class="tab-title">Edit Ticket Price</h2>
                     <form action="change-price" method="post">
-                        <label for="priceType1">Giá vé xe đạp / xe điện</label>
+                        <label for="priceType1" class="form-label">Bicycle/ Electric bicycle ticket cost</label>
                         <input type="text" name="priceType1" placeholder="3000" required><br>
-                        <label for="priceType2">Giá vé xe máy</label>
+                        <label for="priceType2" class="form-label">Motorcycle ticket price</label>
                         <input type="text" name="priceType2" placeholder="5000" required><br>
-                        <label for="priceType3">Giá vé xe oto</label>
+                        <label for="priceType3" class="form-label">Car ticket price</label>
                         <input type="text" name="priceType3" placeholder="50000" required><br>
-                        <label for="priceType4">Giá vé các loại xe khác</label>
+                        <label for="priceType4" class="form-label">Ticket cost for other vehicles</label>
                         <input type="text" name="priceType4" placeholder="20000" required><br>
-                        <input type="submit" value="Save">
-                        <input type="reset" value="Reset">
+                        <div class="center-line">
+                            <button class="button noselect btn-inverser-effect" type="reset">
+                                <span class="text">Reset</span>
+                                <span class="icon">
+                                    <i class="fa-solid fa-arrow-rotate-left"></i>
+                                </span>
+                            </button>
+                            <button class="button noselect" type="submit">
+                                <span class="text">Save</span>
+                                <span class="icon">
+                                    <i class="fa-solid fa-check"></i>
+                                </span>
+                            </button>
+                        </div>
                     </form>
                 </div>
-                <div class="form__body-display">
-                    <h2>đăng xuất</h2>
-                    <form action="logout">
-                        <button type="submit">Xác nhận đăng xuất</button>
-                    </form>
-                </div>
+                
             </div>
         </div>
     </div>
+    
     <script type="text/javascript">
         const $ = document.querySelector.bind(document);
         const $$ = document.querySelectorAll.bind(document);
 
-        const listItem = $$('.list__item');
+        const tabs = $$('.dashboard__item');
         const workPlaces = $$('.form__body-display');
+        const tabActive = $('.dashboard__item.active');
+        const line = $('.dashboard__line');
+        line.style.top = tabActive.offsetTop + 'px';
+        line.style.height = tabActive.offsetHeight + 'px';
         //click to active 
-        listItem.forEach((item, index) => {
+        tabs.forEach((item, index) => {
             const workPlace = workPlaces[index];
             item.onclick = function () {
-                $('.list__item.active').classList.remove('active');
+                $('.dashboard__item.active').classList.remove('active');
                 $('.form__body-display.active').classList.remove('active');
 
                 item.classList.add('active');
                 workPlace.classList.add('active');
+
+                line.style.top = this.offsetTop + 'px';
+                line.style.height = this.offsetHeight + 'px';
             };
         })
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-</body>
 
+        var x, i, j, l, ll, selElmnt, a, b, c;
+        /*look for any elements with the class "custom-select":*/
+        x = document.getElementsByClassName("custom-select");
+        l = x.length;
+        for (i = 0; i < l; i++) {
+        selElmnt = x[i].getElementsByTagName("select")[0];
+        ll = selElmnt.length;
+        /*for each element, create a new DIV that will act as the selected item:*/
+        a = document.createElement("DIV");
+        a.setAttribute("class", "select-selected");
+        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+        x[i].appendChild(a);
+        /*for each element, create a new DIV that will contain the option list:*/
+        b = document.createElement("DIV");
+        b.setAttribute("class", "select-items select-hide");
+        for (j = 1; j < ll; j++) {
+            /*for each option in the original select element,
+            create a new DIV that will act as an option item:*/
+            c = document.createElement("DIV");
+            c.innerHTML = selElmnt.options[j].innerHTML;
+            c.addEventListener("click", function(e) {
+                /*when an item is clicked, update the original select box,
+                and the selected item:*/
+                var y, i, k, s, h, sl, yl;
+                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                sl = s.length;
+                h = this.parentNode.previousSibling;
+                for (i = 0; i < sl; i++) {
+                if (s.options[i].innerHTML == this.innerHTML) {
+                    s.selectedIndex = i;
+                    h.innerHTML = this.innerHTML;
+                    y = this.parentNode.getElementsByClassName("same-as-selected");
+                    yl = y.length;
+                    for (k = 0; k < yl; k++) {
+                    y[k].removeAttribute("class");
+                    }
+                    this.setAttribute("class", "same-as-selected");
+                    break;
+                }
+                }
+                h.click();
+            });
+            b.appendChild(c);
+        }
+        x[i].appendChild(b);
+        a.addEventListener("click", function(e) {
+            /*when the select box is clicked, close any other select boxes,
+            and open/close the current select box:*/
+            e.stopPropagation();
+            closeAllSelect(this);
+            this.nextSibling.classList.toggle("select-hide");
+            this.classList.toggle("select-arrow-active");
+            });
+        }
+        function closeAllSelect(elmnt) {
+        /*a function that will close all select boxes in the document,
+        except the current select box:*/
+        var x, y, i, xl, yl, arrNo = [];
+        x = document.getElementsByClassName("select-items");
+        y = document.getElementsByClassName("select-selected");
+        xl = x.length;
+        yl = y.length;
+        for (i = 0; i < yl; i++) {
+            if (elmnt == y[i]) {
+            arrNo.push(i)
+            } else {
+            y[i].classList.remove("select-arrow-active");
+            }
+        }
+        for (i = 0; i < xl; i++) {
+            if (arrNo.indexOf(i)) {
+            x[i].classList.add("select-hide");
+            }
+        }
+        }
+        /*if the user clicks anywhere outside the select box,
+        then close all select boxes:*/
+        document.addEventListener("click", closeAllSelect);
+    </script>
+</body>
 </html>
+
+
+<!-- ĐANG SỬA PHẦN BTN -->

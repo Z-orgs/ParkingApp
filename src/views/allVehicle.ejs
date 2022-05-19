@@ -5,52 +5,145 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/list.css">
 </head>
 
 <body>
-    <div class="searchVehicle">
-        <form method="post">
-            <input type="text" name="keywordLicense" placeholder="license">
-            <button type="submit">tìm</button>
-        </form>
-    </div>
+    
     <h2>Danh sách phương tiện</h2>
-    <table>
+    <div class="table-wrapper">
+        <div class="searchVehicle">
+            <form method="post">
+                <input type="text" name="keywordLicense" placeholder="license">
+                <button type="submit">tìm</button>
+            </form>
+        </div>
+        <table class="fl-table">
+            <thead>
+                <tr>
+                    <th>ID(Vehicle)</th>
+                    <th>License</th>
+                    <th>Type</th>
+                    <th>Owner by ID</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i < dataVehicle.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= dataVehicle[i].idV %>
+                        </td>
+                        <td>
+                            <%= dataVehicle[i].license %>
+                        </td>
+                        <td>
+                            <%= dataVehicle[i].type %>
+                        </td>
+                        <td>
+                            <%= dataVehicle[i].id %>
+                        </td>
+                        <td>
+                            <a href="/detail/vehicle/<%= dataVehicle[i].idV%>">Detail</a>
+                            <form action="edit-vehicle/<%= dataVehicle[i].idV%>"><button type="submit">Edit</button></form>
+                            <form action="delete-vehicle" method="post">
+                                <input type="text" name="idV" hidden value="<%= dataVehicle[i].idV%>">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- <h2>Responsive Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
         <tr>
-            <th>ID(Vehicle)</th>
-            <th>License</th>
-            <th>Type</th>
-            <th>Owner by ID</th>
-            <th>Actions</th>
+            <th>Header 1</th>
+            <th>Header 2</th>
+            <th>Header 3</th>
+            <th>Header 4</th>
+            <th>Header 5</th>
         </tr>
-        <% for(var i=0; i < dataVehicle.length; i++) { %>
-            <tr>
-                <td>
-                    <%= dataVehicle[i].idV %>
-                </td>
-                <td>
-                    <%= dataVehicle[i].license %>
-                </td>
-                <td>
-                    <%= dataVehicle[i].type %>
-                </td>
-                <td>
-                    <%= dataVehicle[i].id %>
-                </td>
-                <td>
-                    <a href="/detail/vehicle/<%= dataVehicle[i].idV%>">Detail</a>
-                    <form action="edit-vehicle/<%= dataVehicle[i].idV%>"><button type="submit">Edit</button></form>
-                    <form action="delete-vehicle" method="post">
-                        <input type="text" name="idV" hidden value="<%= dataVehicle[i].idV%>">
-                        <button type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            <% } %>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td>Content 1</td>
+        </tr>
+        <tr>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td>Content 2</td>
+        </tr>
+        <tr>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td>Content 3</td>
+        </tr>
+        <tr>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td>Content 4</td>
+        </tr>
+        <tr>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td>Content 5</td>
+        </tr>
+        <tr>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td>Content 6</td>
+        </tr>
+        <tr>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td>Content 7</td>
+        </tr>
+        <tr>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td>Content 8</td>
+        </tr>
+        <tr>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td>Content 9</td>
+        </tr>
+        <tr>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td>Content 10</td>
+        </tr>
+        <tbody>
     </table>
+</div> -->
 </body>
 
 </html>
