@@ -53,6 +53,9 @@ let getDetailPageV = async (req, res) => {
       "select * from vehicle where idV = ? AND Admin = ?",
       [id, username]
     );
+    row.forEach((veh) => {
+      veh.type = (veh.type === "type1") ? "Bicycle/ Electric bicycle" : (veh.type === "type2") ? "Motorcycle" : (veh.type === "type3") ? "Car" : "Other";
+    });
     return res.render("detailV.ejs", { dataVehicle: row });
   } catch (error) {
     console.log(error);
