@@ -76,7 +76,7 @@ let changePass = async (req, res) => {
       ]);
       return res.redirect("/console");
     } else {
-      return res.render("failToChangePass");
+      return res.render("./LOG/failToChangePass");
     }
   } catch (error) {
     console.log(error);
