@@ -21,16 +21,8 @@ let getAllVehicle = async (req, res) => {
       "SELECT * FROM vehicle where Admin = ?",
       [username]
     );
-    rows.forEach(function (veh) {
-      if (veh.type === "type1") {
-        veh.type === "Bicycle/ Electric bicycle";
-      } else if (veh.type === "type2") {
-        veh.type = "Motorcycle";
-      } else if (veh.type === "type3") {
-        veh.type = "Car";
-      } else {
-        veh.type = "Other";
-      }
+    rows.forEach((veh) => {
+      veh.type = (veh.type === "type1") ? "Bicycle/ Electric bicycle" : (veh.type === "type2") ? "Motorcycle" : (veh.type === "type3") ? "Car" : "Other";
     });
     return res.render("allVehicle.ejs", { dataVehicle: rows });
   } catch (error) {
