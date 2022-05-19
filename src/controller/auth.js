@@ -1,3 +1,4 @@
+import { type } from "express/lib/response";
 import pool from "../configs/connectDB";
 String.prototype.hashCode = function () {
   var hash = 0, i, chr;
@@ -69,7 +70,7 @@ let changePass = async (req, res) => {
       [req.session.username]
     );
     oldPass = oldPass[0][0];
-    if (oldPass.pword.hashCode() === req.body.oldPass.hashCode() && newPass === reNewPass) {
+    if (parseInt(oldPass.pword) === req.body.oldPass.hashCode() && newPass === reNewPass) {
       await pool.execute("update userAdmin set pword = ? where userA = ?", [
         newPass,
         req.session.username,
