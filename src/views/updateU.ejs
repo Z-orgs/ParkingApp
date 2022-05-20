@@ -5,29 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/update.css">
 </head>
 
 <body>
+    <h2 class="tab-title">UPDATE</h2>
     <form action="/update-user" method="POST">
-        <div><input type="text" name="id" value="<%= dataUser.id %>" hidden></div>
         <div>
-            <label>Full Name</label>
+            <input type="text" name="id" value="<%= dataUser.id %>" hidden></div>
+        <div>
+            <label class="form-label">Full Name</label>
             <input type="text" name="fullName" value="<%= dataUser.fullName%>">
         </div>
         <div>
-            <label>SĐT</label>
+            <label class="form-label">Phone number</label>
             <input type="text" name="tel" value="<%= dataUser.tel%>">
         </div>
         <div>
-            <label>Địa chỉ</label>
+            <label class="form-label">Address</label>
             <input type="text" name="addr" value="<%= dataUser.addr%>">
         </div>
 
-        <div>
-            <button type="submit">Save</button>
-            <button type="reset">reset</button>
+        <div class="center-line">
+            <button class="button noselect btn-inverser-effect" type="reset">
+                <span class="text">Reset</span>
+                <span class="icon">
+                    <i class="fa-solid fa-arrow-rotate-left"></i>
+                </span>
+            </button>
+            <button class="button noselect" type="submit">
+                <span class="text">Save</span>
+                <span class="icon">
+                    <i class="fa-solid fa-check"></i>
+                </span>
+            </button>
         </div>
     </form>
+    
 </body>
 
 </html>

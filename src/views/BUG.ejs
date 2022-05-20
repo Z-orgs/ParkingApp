@@ -4,20 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Error Page</title>
+    
+	<link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
     <script type="text/javascript">
         function delayer() {
-            window.location = "/home";
+            window.location = "/console";
         }
     </script>
-    </head>
 
-    <body onLoad="setTimeout('delayer()', 5000)">
-        <h2>Có lỗi xảy ra...</h2>
-        <h2>Chúng tôi sẽ chuyển hướng bạn về trang home.</h2>
+    <body onLoad="setTimeout('delayer()', 6000)">
+        <div class="wrapper">
+            <ul class="bg-bubbles">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+        </div>
+        <div id="notfound">
+            <div class="notfound">
+                <div class="notfound-404">
+                    <h3>An error has occurred...</h3>
+                    <h1><span>O</span><span>O</span><span>P</span><span>S</span><span>!</span></h1>
+                </div>
+                <h2>we will redirect you to the home page</h2>
+            </div>
+        </div>
     </body>
 
 </html>
+
+

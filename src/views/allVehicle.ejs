@@ -6,19 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/list.css">
 </head>
 
 <body>
     
-    <h2>Danh sách phương tiện</h2>
-    <div class="table-wrapper">
-        <div class="searchVehicle">
+    <div class="center-line">
+        <div class="search-box">
             <form method="post">
-                <input type="text" name="keywordLicense" placeholder="license">
-                <button type="submit">tìm</button>
+                <button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
+                <input type="text" class="input-search" placeholder="Enter License..." name="keywordLicense">
             </form>
         </div>
+    </div>
+    <h2>Danh sách phương tiện</h2>
+    <div class="table-wrapper">
         <table class="fl-table">
             <thead>
                 <tr>
@@ -45,12 +48,31 @@
                             <%= dataVehicle[i].id %>
                         </td>
                         <td>
-                            <a href="/detail/vehicle/<%= dataVehicle[i].idV%>">Detail</a>
-                            <form action="edit-vehicle/<%= dataVehicle[i].idV%>"><button type="submit">Edit</button></form>
-                            <form action="delete-vehicle" method="post">
-                                <input type="text" name="idV" hidden value="<%= dataVehicle[i].idV%>">
-                                <button type="submit">Delete</button>
-                            </form>
+                            <div class="center-colum">
+                                <a href="/detail/vehicle/<%= dataVehicle[i].idV%>" class="button noselect">
+                                    <span class="text">Detail</span>
+                                    <span class="icon">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    </span>
+                                </a>
+                                <form action="edit-vehicle/<%= dataVehicle[i].idV%>">
+                                    <button class="button noselect button--primary" type="submit">
+                                        <span class="text">Edit</span>
+                                        <span class="icon">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </span>
+                                    </button>
+                                </form>
+                                <form action="delete-vehicle" method="post">
+                                    <input type="text" name="idV" hidden value="<%= dataVehicle[i].idV%>">
+                                    <button class="button noselect button--danger" type="submit">
+                                        <span class="text">Delete</span>
+                                        <span class="icon">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </span>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     <% } %>

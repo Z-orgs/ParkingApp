@@ -5,22 +5,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail user <%= dataUser[0].id %>
+    <title>
+        Detail user <%= dataUser[0].id %>
     </title>
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/detail.css">
 </head>
 
 <body>
-    <div>ID: <%= dataUser[0].id %>
+    <div class="mid-screen">
+        <div class="center-line">
+            <a href="/allUser" class="button noselect btn-inverser-effect">
+                <span class="text">Back</span>
+                <span class="icon">
+                    <i class="fa-solid fa-angles-left"></i>
+                </span>
+            </a>
+        </div>
+        <div class="detail-table">
+            <div class="detail-table__col-title">
+                <div class="detail-table__row">
+                    ID
+                </div>
+                <div class="detail-table__row">
+                    Full Name    
+                </div>
+                <div class="detail-table__row">
+                    In debt
+                </div>
+                <div class="detail-table__row">
+                    Tel
+                </div>
+                <div class="detail-table__row">
+                    Address
+                </div>
+            </div>
+            <div class="detail-table__col-content">
+                <div class="detail-table__row">
+                    <%= dataUser[0].id %>
+                </div>
+                <div class="detail-table__row">
+                    <%= dataUser[0].fullName %> 
+                </div>
+                <div class="detail-table__row">
+                    <%= dataUser[0].inDebt %>
+                </div>
+                <div class="detail-table__row">
+                    <%= dataUser[0].tel %>
+                </div>
+                <div class="detail-table__row">
+                    <%= dataUser[0].addr %>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>Full Name: <%= dataUser[0].fullName %>
-    </div>
-    <div>In debt: <%= dataUser[0].inDebt %>
-    </div>
-    <div>Tel: <%= dataUser[0].tel %>
-    </div>
-    <div>Address: <%= dataUser[0].addr %>
-    </div>
-    <div><a href="/console">Cancel</a></div>
 </body>
 
 </html>

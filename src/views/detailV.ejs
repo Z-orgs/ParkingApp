@@ -5,20 +5,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail vehicle <%= dataVehicle[0].idV %>
+    <title>
+        Detail vehicle <%= dataVehicle[0].idV %>
     </title>
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/detail.css">
 </head>
 
-<body>
-    <div>ID(vehicle): <%= dataVehicle[0].idV %>
+<body>    
+    <div class="mid-screen">
+        <div class="center-line">
+            <a href="/allVehicle" class="button noselect btn-inverser-effect">
+                <span class="text">Back</span>
+                <span class="icon">
+                    <i class="fa-solid fa-angles-left"></i>
+                </span>
+            </a>
+        </div>
+        <div class="detail-table">
+            <div class="detail-table__col-title">
+                <div class="detail-table__row">
+                    ID
+                </div>
+                <div class="detail-table__row">
+                    License    
+                </div>
+                <div class="detail-table__row">
+                    Type
+                </div>
+                <div class="detail-table__row">
+                    Owner by ID
+                </div>
+            </div>
+            <div class="detail-table__col-content">
+                <div class="detail-table__row">
+                    <%= dataVehicle[0].idV %>
+                </div>
+                <div class="detail-table__row">
+                    <%= dataVehicle[0].license %> 
+                </div>
+                <div class="detail-table__row">
+                    <%= dataVehicle[0].type %>
+                </div>
+                <div class="detail-table__row">
+                    <%= dataVehicle[0].id %>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>License: <%= dataVehicle[0].license %>
-    </div>
-    <div>Type: <%= dataVehicle[0].type %>
-    </div>
-    <div>Owner by ID: <%= dataVehicle[0].id %>
-    </div>
-    <div><a href="/console">Cancel</a></div>
 </body>
 
 </html>

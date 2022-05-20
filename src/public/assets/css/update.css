@@ -1,0 +1,4 @@
+body {
+    margin-top: var(--height-console-header);
+    padding: 100px 160px;
+}
