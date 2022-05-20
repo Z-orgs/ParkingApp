@@ -83,10 +83,10 @@ let changePass = async (req, res) => {
         req.session.username,
       ]);
       message.mess = "Change password successfully";
-      return res.render("/console", { user: user, message: message });
+      return res.render("console", { user: user, message: message });
     } else {
       message.mess = "Password change failed";
-      return res.render("/console", { user: user, message: message });
+      return res.render("console", { user: user, message: message });
     }
   } catch (error) {
     console.log(error);
