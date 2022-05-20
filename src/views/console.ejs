@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,30 +8,32 @@
     <title>Parking App</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
+
 <body>
     <div class="app">
         <div class="wrapper wrapper-login">
             <ul class="bg-bubbles">
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
             </ul>
         </div>
         <div class="header console-header">
             <div class="header-l">
-                
+
                 <a href="/" class="header-l__logo">
                     <img src="./assets/images/logo.png" alt="">
                     <h3 class="header-l__title">PARKING APP</h3>
@@ -42,14 +45,16 @@
                 <div class="header__user">
                     <input type="checkbox" id="show-user-control" hidden>
                     <label for="show-user-control" class="modal modal-transparent"></label>
-                    <label for="show-user-control" class="header__user-name"><%= user.username%></label>
+                    <label for="show-user-control" class="header__user-name">
+                        <%= user.username%>
+                    </label>
                     <ul class="header__user-control">
                         <label for="show-modal">
                             <li for="show-modal" class="header__user-control-item">
                                 <i class="fa-solid fa-arrows-rotate header__user-control-item-icon"></i>
                                 Password
                             </li>
-                        </label>   
+                        </label>
                         <form action="logout">
                             <button type="submit" class="btn-logout">
                                 <li class="header__user-control-item">
@@ -58,7 +63,7 @@
                                 </li>
                             </button>
                         </form>
-                            
+
                     </ul>
                 </div>
             </div>
@@ -84,7 +89,7 @@
                     </form>
                 </div>
             </div>
-            
+
             <ul class="dashboard">
                 <li class="dashboard__item active">
                     <i class="fa-solid fa-layer-plus dashboard__item-icon"></i>
@@ -104,7 +109,7 @@
                 </li>
                 <li class="dashboard__item">
                     <i class="fa-solid fa-rectangle-list dashboard__item-icon"></i>
-                    vehicles list 
+                    vehicles list
                 </li>
                 <li class="dashboard__item">
                     <i class="fa-solid fa-table-list dashboard__item-icon"></i>
@@ -129,7 +134,7 @@
                             <button class="button noselect btn-in-tab" type="submit">
                                 <span class="text">Submit</span>
                                 <span class="icon">
-                                  <i class="fa-solid fa-paper-plane"></i>
+                                    <i class="fa-solid fa-paper-plane"></i>
                                 </span>
                             </button>
                         </div>
@@ -155,17 +160,17 @@
                             <button class="button noselect btn-in-tab" type="submit">
                                 <span class="text">Submit</span>
                                 <span class="icon">
-                                  <i class="fa-solid fa-paper-plane"></i>
+                                    <i class="fa-solid fa-paper-plane"></i>
                                 </span>
-                              </button>
-                        
+                            </button>
+
                         </div>
                     </form>
                 </div>
                 <div class="form__body-display">
                     <h2 class="tab-title">Add Vehicle</h2>
                     <form action="add-new-vehicle" method="post">
-                        <div style="width: 100%; background: #fff;"  class="custom-select">
+                        <div style="width: 100%; background: #fff;" class="custom-select">
                             <select name="typeVehicle" id="typeOfUser">
                                 <option value="type0">Choose vehicle type</option>
                                 <option value="type1">Xe đạp / xe điện</option>
@@ -175,7 +180,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="license" class="form-label">License plate</label>
-                            <input type="text" class="form-control" name="license" placeholder="Example input placeholder">
+                            <input type="text" class="form-control" name="license"
+                                placeholder="Example input placeholder">
                         </div>
                         <div class="mb-3">
                             <label for="id" class="form-label">Owner by ID</label>
@@ -185,7 +191,7 @@
                             <button class="button noselect btn-in-tab" type="submit">
                                 <span class="text">Submit</span>
                                 <span class="icon">
-                                  <i class="fa-solid fa-paper-plane"></i>
+                                    <i class="fa-solid fa-paper-plane"></i>
                                 </span>
                             </button>
                         </div>
@@ -245,11 +251,11 @@
                         </div>
                     </form>
                 </div>
-                
+
             </div>
         </div>
     </div>
-    
+
     <script type="text/javascript">
         const $ = document.querySelector.bind(document);
         const $$ = document.querySelectorAll.bind(document);
@@ -273,96 +279,97 @@
                 line.style.top = this.offsetTop + 'px';
                 line.style.height = this.offsetHeight + 'px';
             };
-        })
+        });
 
         var x, i, j, l, ll, selElmnt, a, b, c;
         /*look for any elements with the class "custom-select":*/
         x = document.getElementsByClassName("custom-select");
         l = x.length;
         for (i = 0; i < l; i++) {
-        selElmnt = x[i].getElementsByTagName("select")[0];
-        ll = selElmnt.length;
-        /*for each element, create a new DIV that will act as the selected item:*/
-        a = document.createElement("DIV");
-        a.setAttribute("class", "select-selected");
-        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-        x[i].appendChild(a);
-        /*for each element, create a new DIV that will contain the option list:*/
-        b = document.createElement("DIV");
-        b.setAttribute("class", "select-items select-hide");
-        for (j = 1; j < ll; j++) {
-            /*for each option in the original select element,
-            create a new DIV that will act as an option item:*/
-            c = document.createElement("DIV");
-            c.innerHTML = selElmnt.options[j].innerHTML;
-            c.addEventListener("click", function(e) {
-                /*when an item is clicked, update the original select box,
-                and the selected item:*/
-                var y, i, k, s, h, sl, yl;
-                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-                sl = s.length;
-                h = this.parentNode.previousSibling;
-                for (i = 0; i < sl; i++) {
-                if (s.options[i].innerHTML == this.innerHTML) {
-                    s.selectedIndex = i;
-                    h.innerHTML = this.innerHTML;
-                    y = this.parentNode.getElementsByClassName("same-as-selected");
-                    yl = y.length;
-                    for (k = 0; k < yl; k++) {
-                    y[k].removeAttribute("class");
+            selElmnt = x[i].getElementsByTagName("select")[0];
+            ll = selElmnt.length;
+            /*for each element, create a new DIV that will act as the selected item:*/
+            a = document.createElement("DIV");
+            a.setAttribute("class", "select-selected");
+            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+            x[i].appendChild(a);
+            /*for each element, create a new DIV that will contain the option list:*/
+            b = document.createElement("DIV");
+            b.setAttribute("class", "select-items select-hide");
+            for (j = 1; j < ll; j++) {
+                /*for each option in the original select element,
+                create a new DIV that will act as an option item:*/
+                c = document.createElement("DIV");
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                c.addEventListener("click", function (e) {
+                    /*when an item is clicked, update the original select box,
+                    and the selected item:*/
+                    var y, i, k, s, h, sl, yl;
+                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                    sl = s.length;
+                    h = this.parentNode.previousSibling;
+                    for (i = 0; i < sl; i++) {
+                        if (s.options[i].innerHTML == this.innerHTML) {
+                            s.selectedIndex = i;
+                            h.innerHTML = this.innerHTML;
+                            y = this.parentNode.getElementsByClassName("same-as-selected");
+                            yl = y.length;
+                            for (k = 0; k < yl; k++) {
+                                y[k].removeAttribute("class");
+                            }
+                            this.setAttribute("class", "same-as-selected");
+                            break;
+                        }
                     }
-                    this.setAttribute("class", "same-as-selected");
-                    break;
-                }
-                }
-                h.click();
-            });
-            b.appendChild(c);
-        }
-        x[i].appendChild(b);
-        a.addEventListener("click", function(e) {
-            /*when the select box is clicked, close any other select boxes,
-            and open/close the current select box:*/
-            e.stopPropagation();
-            closeAllSelect(this);
-            this.nextSibling.classList.toggle("select-hide");
-            this.classList.toggle("select-arrow-active");
+                    h.click();
+                });
+                b.appendChild(c);
+            }
+            x[i].appendChild(b);
+            a.addEventListener("click", function (e) {
+                /*when the select box is clicked, close any other select boxes,
+                and open/close the current select box:*/
+                e.stopPropagation();
+                closeAllSelect(this);
+                this.nextSibling.classList.toggle("select-hide");
+                this.classList.toggle("select-arrow-active");
             });
         }
         function closeAllSelect(elmnt) {
-        /*a function that will close all select boxes in the document,
-        except the current select box:*/
-        var x, y, i, xl, yl, arrNo = [];
-        x = document.getElementsByClassName("select-items");
-        y = document.getElementsByClassName("select-selected");
-        xl = x.length;
-        yl = y.length;
-        for (i = 0; i < yl; i++) {
-            if (elmnt == y[i]) {
-            arrNo.push(i)
-            } else {
-            y[i].classList.remove("select-arrow-active");
+            /*a function that will close all select boxes in the document,
+            except the current select box:*/
+            var x, y, i, xl, yl, arrNo = [];
+            x = document.getElementsByClassName("select-items");
+            y = document.getElementsByClassName("select-selected");
+            xl = x.length;
+            yl = y.length;
+            for (i = 0; i < yl; i++) {
+                if (elmnt == y[i]) {
+                    arrNo.push(i);
+                } else {
+                    y[i].classList.remove("select-arrow-active");
+                }
             }
-        }
-        for (i = 0; i < xl; i++) {
-            if (arrNo.indexOf(i)) {
-            x[i].classList.add("select-hide");
+            for (i = 0; i < xl; i++) {
+                if (arrNo.indexOf(i)) {
+                    x[i].classList.add("select-hide");
+                }
             }
-        }
         }
         /*if the user clicks anywhere outside the select box,
         then close all select boxes:*/
         document.addEventListener("click", closeAllSelect);
 
         //show noti 
+        showAlert = function (err) {
+            alert('error: ' + err);
+        };
         var error = "<%= message.mess %>";
         if (error !== "") {
             showAlert(error);
         }
-        showAlert = function (err) {
-            alert('error: ' + err);
-        };
     </script>
-    
+
 </body>
+
 </html>
