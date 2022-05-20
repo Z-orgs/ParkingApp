@@ -1,4 +1,5 @@
 var mess = "";
+var message = { "mess": mess };
 let getHomePage = (req, res) => {
   return res.render("index.ejs");
 };
@@ -7,7 +8,7 @@ let getLoginPage = function (req, res) {
     if (req.session.loggedin) {
       return res.redirect("/console");
     } else {
-      return res.render("./LOG/login", { message: mess });
+      return res.render("./LOG/login", { message: message });
     }
   } catch (error) {
     return res.redirect("login");
@@ -18,7 +19,7 @@ let getRegPage = function (req, res) {
     if (req.session.loggedin) {
       return res.redirect("/console");
     } else {
-      return res.render("./REG/register", { message: mess });
+      return res.render("./REG/register", { message: message });
     }
   } catch (error) {
     console.log(error);
@@ -30,7 +31,7 @@ let getConsolePage = async (req, res) => {
     if (req.session.loggedin) {
       const username = req.session.username;
       var user = { "username": username };
-      return res.render("console", { user: user, message: mess });
+      return res.render("console", { user: user, message: message });
     } else {
       return res.redirect("login");
     }
