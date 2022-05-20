@@ -1,6 +1,6 @@
 CREATE TABLE vehicle(
     idV int AUTO_INCREMENT,
-    license VARCHAR(20) NOT NULL UNIQUE,
+    license VARCHAR(20) NOT NULL,
     type VARCHAR(15) not NULL,
     id int not NULL,
     Admin varchar(50) NOT NULL,
