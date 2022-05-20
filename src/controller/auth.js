@@ -10,6 +10,7 @@ String.prototype.hashCode = function () {
   }
   return hash;
 };
+var mess = "";
 let authLOG = async (req, res) => {
   try {
     var userA = req.body.username;
@@ -20,7 +21,8 @@ let authLOG = async (req, res) => {
       [userA, pword]
     );
     if (rows.length == 0) {
-      return res.render("./LOG/login");
+      mess = "login failed please check again";
+      return res.render("./LOG/login", { message: mess });
     } else {
       req.session.loggedin = true;
       req.session.username = userA;
@@ -39,7 +41,8 @@ let authREG = async (req, res) => {
     pword = pword.hashCode();
     cpword = cpword.hashCode();
     if (pword !== cpword) {
-      return res.render("./REG/pwNoSame");
+      mess = "Passwords are not the same";
+      return res.render("./REG/register", { message: mess });
     } else if (pword === cpword) {
       const [rows, fields] = await pool.execute(
         "select * from userAdmin where userA = ?",
@@ -50,9 +53,11 @@ let authREG = async (req, res) => {
           "insert into userAdmin(userA, pword) values (?, ?)",
           [userA, pword]
         );
-        res.render("./REG/regsuccess");
+        mess = "Sign Up Success";
+        res.render("./LOG/login", { message: mess });
       } else {
-        return res.render("./REG/existUserAdmin");
+        mess = "Username already exists";
+        return res.render("./REG/register", { message: mess });
       }
     }
   } catch (error) {
@@ -62,7 +67,8 @@ let authREG = async (req, res) => {
 };
 let changePass = async (req, res) => {
   try {
-    // var oldPass = req.body.oldPass;
+    const username = req.session.username;
+    var user = { "username": username };
     var newPass = req.body.newPass.hashCode();
     var reNewPass = req.body.reNewPass.hashCode();
     var oldPass = await pool.execute(
@@ -75,9 +81,11 @@ let changePass = async (req, res) => {
         newPass,
         req.session.username,
       ]);
-      return res.redirect("/console");
+      mess = "Change password successfully";
+      return res.render("/console", { user: user, message: mess });
     } else {
-      return res.render("./LOG/failToChangePass");
+      mess = "Password change failed";
+      return res.render("/console", { user: user, message: mess });
     }
   } catch (error) {
     console.log(error);
