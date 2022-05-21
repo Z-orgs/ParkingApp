@@ -1,9 +1,9 @@
 import mysql from "mysql2/promise";
-import { host, user, password, database } from "./JSON/database.json";
+import 'dotenv/config';
 var pool = mysql.createPool({
-  host: host,
-  user: user,
-  password: password,
-  database: database
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 export default pool;
