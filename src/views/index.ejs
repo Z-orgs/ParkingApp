@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/logo.ico">
 </head>
 
 <body>
@@ -93,6 +94,14 @@
             <p>©2022 ParkingApp</p>
         </div>
     </div>
+    <script type="text/javascript">
+        var newLocation = () => {
+            window.location = "http://parkingapp.xyz/";
+        };
+        if (window.location.href === "https://parking-t11.herokuapp.com/") {
+            newLocation();
+        }
+    </script>
 </body>
 
 </html>
