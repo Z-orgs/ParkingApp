@@ -1,6 +1,6 @@
 # NewParkingWebApp
 
-DEMO: http://parking-t11.herokuapp.com/
+DEMO: http://parkingapp.xyz/
 
 This is just my class project, you can freely develop for it better.
 
