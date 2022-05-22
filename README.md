@@ -9,4 +9,6 @@ Config:
 - DB: ./src/configs/JSON/database.json
 - View engine source files(EJS): ./src/views
 
-#Author: dimpDEV & imdev2002
+#Author: DIMP && Yuno
+
+#Supporter: Haa && yElmer && HieuHoang
