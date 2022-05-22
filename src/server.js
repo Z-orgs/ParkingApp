@@ -5,7 +5,7 @@ import pool from "./configs/connectDB";
 import session from "express-session";
 import herokuAwake from "heroku-awake";
 const app = express();
-const url = "http://parking-t11.herokuapp.com";
+const url = "http://parkingapp.xyz";
 const PORT = process.env.PORT || 3000;
 app.use(
   session({
