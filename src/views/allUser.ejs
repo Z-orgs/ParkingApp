@@ -12,12 +12,12 @@
 </head>
 
 <body>
-    
+
     <div class="center-line">
         <div class="search-box">
             <form method="post">
                 <button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
-                <input type="text" class="input-search" placeholder="Enter Full name..." name="keywordName">
+                <input type="text" class="input-search" placeholder="Enter name..." name="keywordName">
             </form>
         </div>
     </div>
@@ -52,7 +52,7 @@
                         <td>
                             <%= dataUser[i].addr %>
                         </td>
-    
+
                         <td>
                             <div class="center-colum">
                                 <a href="/detail/user/<%= dataUser[i].id%>" class="button noselect">
@@ -70,7 +70,7 @@
                                     </button>
                                 </form>
                                 <form action="delete-user" method="post">
-                                    
+
                                     <input type="text" name="id" hidden value="<%= dataUser[i].id%>">
                                     <button class="button noselect button--danger" type="submit">
                                         <span class="text">Delete</span>
