@@ -1,7 +1,6 @@
 import express from "express";
 import homeController from "../controller/homeController";
 import consoleController from "../controller/consoleController.js";
-import { route } from "express/lib/application";
 import auth from "../controller/auth.js";
 let router = express.Router();
 
@@ -18,7 +17,6 @@ const initWebRoute = (app) => {
   router.get("/login", homeController.getLoginPage);
   router.get("/register", homeController.getRegPage);
   router.get("/logout", auth.logout);
-  router.get("/BUG", homeController.getBUGPage);
   //post
   router.post("/delete-vehicle", consoleController.deleteVehicle);
   router.post("/delete-user", consoleController.deleteUser);

@@ -1,7 +1,7 @@
-import full from "@babel/core/lib/config/full";
 import pool from "../configs/connectDB";
 
 var mess = "";
+var mess0 = "";
 var message = { "mess": mess };
 let getAllUser = async (req, res) => {
   try {
@@ -230,7 +230,7 @@ let updateUser = async (req, res) => {
       "update userB set fullName = ?, tel = ?, addr = ? where id = ? AND Admin = ?",
       [fullName, tel, addr, id, username]
     );
-    message.mess = "Update user successfully.";
+    message.mess0 = "Updated user successfully.";
     return res.render("allUser", { dataUser: rows, message: message });
   } catch (error) {
     console.log(error);
@@ -267,10 +267,19 @@ let updateVehicle = async (req, res) => {
       message.mess = "License plate already exists.";
       return res.render("allVehicle.ejs", { dataVehicle: rows, message: message });
     }
+    var [row, fields] = await pool.execute(
+      "select * from userB where id = ? AND Admin = ?",
+      [rows[0].id, username]
+    );
+    if (row.length === 0) {
+      message.mess = "ID not found.";
+      return res.render("console", { user: user, message: message });
+    }
     await pool.execute(
       "update vehicle set license = ?, type = ?, id = ? where idV = ? AND Admin = ?",
       [license, type, id, idV, username]
     );
+    message.mess0 = "Updated vehicle successfully.";
     return res.render("allVehicle.ejs", { dataVehicle: rows, message: message });
   } catch (error) {
     console.log(error);

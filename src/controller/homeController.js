@@ -36,6 +36,7 @@ let getConsolePage = async (req, res) => {
     if (req.session.loggedin) {
       const username = req.session.username;
       var user = { "username": username };
+      message.mess = "";
       return res.render("console", { user: user, message: message });
     } else {
       return res.redirect("/login");
@@ -47,13 +48,9 @@ let getConsolePage = async (req, res) => {
     return res.render("BUG");
   }
 };
-let getBUGPage = (req, res) => {
-  return res.render("BUG");
-};
 export default {
   getHomePage,
   getConsolePage,
   getRegPage,
-  getLoginPage,
-  getBUGPage
+  getLoginPage
 };
