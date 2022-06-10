@@ -155,7 +155,7 @@ let addNewTurn = async (req, res) => {
       "select * from vehicle where license = ? AND Admin = ?",
       [license, username]
     );
-    if (row.length === 0) {
+    if (rows.length === 0) {
       message.mess = "No license plate found.";
       return res.render("console", { user: user, message: message });
     }
