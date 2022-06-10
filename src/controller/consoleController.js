@@ -272,7 +272,7 @@ let updateVehicle = async (req, res) => {
       [rows[0].id, username]
     );
     if (row.length === 0) {
-      message.mess = "ID not found.";
+      message.mess0 = "ID not found.";
       return res.render("console", { user: user, message: message });
     }
     await pool.execute(
