@@ -15,6 +15,9 @@ let getAllUser = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let getAllVehicle = async (req, res) => {
@@ -32,6 +35,9 @@ let getAllVehicle = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 
@@ -47,6 +53,9 @@ let getDetailPageU = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let getDetailPageV = async (req, res) => {
@@ -64,6 +73,9 @@ let getDetailPageV = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let addNewUser = async (req, res) => {
@@ -85,6 +97,9 @@ let addNewUser = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let addNewVehicle = async (req, res) => {
@@ -103,7 +118,7 @@ let addNewVehicle = async (req, res) => {
     }
     var [row, fields] = await pool.execute(
       "select * from vehicle where license = ? AND Admin = ?",
-      [id, username]
+      [license, username]
     );
     if (row.length !== 0) {
       message.mess = "License plate already exists.";
@@ -117,6 +132,9 @@ let addNewVehicle = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let addNewTurn = async (req, res) => {
@@ -167,6 +185,9 @@ let addNewTurn = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let deleteVehicle = async (req, res) => {
@@ -181,6 +202,9 @@ let deleteVehicle = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let deleteUser = async (req, res) => {
@@ -199,6 +223,9 @@ let deleteUser = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let editUser = async (req, res) => {
@@ -213,6 +240,9 @@ let editUser = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let updateUser = async (req, res) => {
@@ -237,6 +267,9 @@ let updateUser = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let editVehicle = async (req, res) => {
@@ -251,6 +284,9 @@ let editVehicle = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let updateVehicle = async (req, res) => {
@@ -286,6 +322,9 @@ let updateVehicle = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let payment = async (req, res) => {
@@ -315,6 +354,9 @@ let payment = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let searchUser = async (req, res) => {
@@ -329,6 +371,9 @@ let searchUser = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let searchVehicle = async (req, res) => {
@@ -343,6 +388,9 @@ let searchVehicle = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 let changePrice = async (req, res) => {
@@ -356,6 +404,9 @@ let changePrice = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("BUG");
+  } finally {
+    message.mess = "";
+    message.mess0 = "";
   }
 };
 module.exports = {
