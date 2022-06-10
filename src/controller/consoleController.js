@@ -10,6 +10,7 @@ let getAllUser = async (req, res) => {
       "SELECT * FROM userB where Admin = ?",
       [username]
     );
+    message.mess0 = "";
     return res.render("allUser", { dataUser: rows, message: message });
   } catch (error) {
     console.log(error);
@@ -23,6 +24,7 @@ let getAllVehicle = async (req, res) => {
       "SELECT * FROM vehicle where Admin = ?",
       [username]
     );
+    message.mess0 = "";
     rows.forEach((veh) => {
       veh.type = (veh.type === "type1") ? "Bicycle/ Electric bicycle" : (veh.type === "type2") ? "Motorcycle" : (veh.type === "type3") ? "Car" : "Other";
     });
