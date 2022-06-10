@@ -2,7 +2,7 @@ import pool from "../configs/connectDB";
 
 var mess = "";
 var mess0 = "";
-var message = { "mess": mess };
+var message = { "mess": mess, mess0: mess0 };
 let getAllUser = async (req, res) => {
   try {
     const username = req.session.username;
@@ -223,7 +223,7 @@ let updateUser = async (req, res) => {
     let { id, fullName, tel, addr } = req.body;
     var [row, field] = await pool.execute("select * from userB where tel = ? and Admin = ?", [tel, username]);
     if (row.length !== 0) {
-      message.mess = "Phone number already exists.";
+      message.mess0 = "Phone number already exists.";
       return res.render("allUser", { dataUser: rows, message: message });
     }
     await pool.execute(
@@ -264,7 +264,7 @@ let updateVehicle = async (req, res) => {
     let { idV, type, license, id } = req.body;
     var [row, field] = await pool.execute("select * from vehicle where license = ? and Admin = ?", [license, username]);
     if (row.length !== 0) {
-      message.mess = "License plate already exists.";
+      message.mess0 = "License plate already exists.";
       return res.render("allVehicle.ejs", { dataVehicle: rows, message: message });
     }
     var [row, fields] = await pool.execute(
