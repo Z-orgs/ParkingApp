@@ -397,6 +397,10 @@ let changePrice = async (req, res) => {
   try {
     const username = req.session.username;
     let { priceType1, priceType2, priceType3, priceType4 } = req.body;
+    if (priceType1 < 0 || priceType2 < 0 || priceType3 < 0 || priceType4 < 0) {
+      message.mess = "The price ticket cannot be negative.";
+      return res.render("console", { user: user, message: message });
+    }
     await pool.execute("update userAdmin set priceType1 = ?, priceType2 = ?, priceType3 = ?, priceType4 =? where userA = ?", [priceType1, priceType2, priceType3, priceType4, username]);
     var user = { "username": username };
     message.mess = "Success";
