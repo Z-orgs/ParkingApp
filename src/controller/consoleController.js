@@ -70,6 +70,11 @@ let addNewUser = async (req, res) => {
     var user = { "username": username };
     message.mess = "Added user successfully";
     let { fullName, tel, addr } = req.body;
+    var [row, field] = await pool.execute("select * from userB where tel = ? and Admin = ?", [tel, username]);
+    if (row.length !== 0) {
+      message.mess = "Phone number already exists.";
+      return res.render("console", { user: user, message: message });
+    }
     await pool.execute(
       "insert into userB(fullName, inDebt, tel, addr, Admin) values(?, ?, ?, ?, ?);",
       [fullName, 0, tel, addr, username]
@@ -77,8 +82,7 @@ let addNewUser = async (req, res) => {
     return res.render("console", { user: user, message: message });
   } catch (error) {
     console.log(error);
-    message.mess = "Phone number already exists.";
-    return res.render("console", { user: user, message: message });
+    return res.render("BUG");
   }
 };
 let addNewVehicle = async (req, res) => {
@@ -87,6 +91,22 @@ let addNewVehicle = async (req, res) => {
     var user = { "username": username };
     message.mess = "Added vehicle successfully";
     let { typeVehicle, license, id } = req.body;
+    var [row, fields] = await pool.execute(
+      "select * from userB where id = ? AND Admin = ?",
+      [id, username]
+    );
+    if (row.length === 0) {
+      message.mess = "ID not found.";
+      return res.render("console", { user: user, message: message });
+    }
+    var [row, fields] = await pool.execute(
+      "select * from vehicle where license = ? AND Admin = ?",
+      [id, username]
+    );
+    if (row.length !== 0) {
+      message.mess = "License plate already exists.";
+      return res.render("console", { user: user, message: message });
+    }
     await pool.execute(
       "insert into vehicle(license, type, id, Admin) values(?, ?, ?, ?);",
       [license, typeVehicle, id, username]
@@ -94,8 +114,7 @@ let addNewVehicle = async (req, res) => {
     return res.render("console", { user: user, message: message });
   } catch (error) {
     console.log(error);
-    message.mess = "License plate already exists.";
-    return res.render("console", { user: user, message: message });
+    return res.render("BUG");
   }
 };
 let addNewTurn = async (req, res) => {
@@ -112,10 +131,14 @@ let addNewTurn = async (req, res) => {
     let priceType4o = await pool.execute("select priceType4 from userAdmin where userA = ?", [username]);
     var tp4 = priceType4o[0][0].priceType4;
     let license = req.body.license;
-    const [rows, fields] = await pool.execute(
+    var [rows, fields] = await pool.execute(
       "select * from vehicle where license = ? AND Admin = ?",
       [license, username]
     );
+    if (row.length === 0) {
+      message.mess = "No license plate found.";
+      return res.render("console", { user: user, message: message });
+    }
     let price =
       rows[0].type === "type1"
         ? tp1
@@ -124,10 +147,14 @@ let addNewTurn = async (req, res) => {
           : rows[0].type === "type3"
             ? tp3
             : tp4;
-    const [row, field] = await pool.execute(
+    var [row, fields] = await pool.execute(
       "select * from userB where id = ? AND Admin = ?",
       [rows[0].id, username]
     );
+    if (row.length === 0) {
+      message.mess = "ID not found.";
+      return res.render("console", { user: user, message: message });
+    }
     let inDebt = row[0].inDebt;
     inDebt += price;
     await pool.execute(
@@ -137,8 +164,7 @@ let addNewTurn = async (req, res) => {
     return res.render("console", { user: user, message: message });
   } catch (error) {
     console.log(error);
-    message.mess = "No license plate found.";
-    return res.render("console", { user: user, message: message });
+    return res.render("BUG");
   }
 };
 let deleteVehicle = async (req, res) => {
@@ -191,6 +217,11 @@ let updateUser = async (req, res) => {
   try {
     const username = req.session.username;
     let { id, fullName, tel, addr } = req.body;
+    var [row, field] = await pool.execute("select * from userB where tel = ? and Admin = ?", [tel, username]);
+    if (row.length !== 0) {
+      message.mess = "Phone number already exists.";
+      return res.render("console", { user: user, message: message });
+    }
     await pool.execute(
       "update userB set fullName = ?, tel = ?, addr = ? where id = ? AND Admin = ?",
       [fullName, tel, addr, id, username]
@@ -198,8 +229,7 @@ let updateUser = async (req, res) => {
     return res.redirect("allUser");
   } catch (error) {
     console.log(error);
-    message.mess = "Phone number already exists.";
-    return res.render("console", { user: user, message: message });
+    return res.render("BUG");
   }
 };
 let editVehicle = async (req, res) => {
@@ -220,6 +250,11 @@ let updateVehicle = async (req, res) => {
   try {
     const username = req.session.username;
     let { idV, type, license, id } = req.body;
+    var [row, field] = await pool.execute("select * from vehicle where license = ? and Admin = ?", [license, username]);
+    if (row.length !== 0) {
+      message.mess = "License plate already exists.";
+      return res.render("console", { user: user, message: message });
+    }
     await pool.execute(
       "update vehicle set license = ?, type = ?, id = ? where idV = ? AND Admin = ?",
       [license, type, id, idV, username]
@@ -227,8 +262,7 @@ let updateVehicle = async (req, res) => {
     return res.redirect("allVehicle");
   } catch (error) {
     console.log(error);
-    message.mess = "License plate already exists.";
-    return res.render("console", { user: user, message: message });
+    return res.render("BUG");
   }
 };
 let payment = async (req, res) => {
@@ -245,6 +279,10 @@ let payment = async (req, res) => {
       "select * from userB where id = ? AND Admin = ?",
       [id, username]
     );
+    if (userB[0].length === 0) {
+      message.mess = "ID not found.";
+      return res.render("console", { user: user, message: message });
+    }
     let newInDebt = userB[0][0].inDebt - money;
     await pool.execute(
       "update userB set inDebt = ? where id = ? AND Admin = ?",
@@ -253,8 +291,7 @@ let payment = async (req, res) => {
     return res.render("console", { user: user, message: message });
   } catch (error) {
     console.log(error);
-    message.mess = "ID not found.";
-    return res.render("console", { user: user, message: message });
+    return res.render("BUG");
   }
 };
 let searchUser = async (req, res) => {
