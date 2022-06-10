@@ -216,17 +216,22 @@ let editUser = async (req, res) => {
 let updateUser = async (req, res) => {
   try {
     const username = req.session.username;
+    var [rows, fields] = await pool.execute(
+      "SELECT * FROM userB where Admin = ?",
+      [username]
+    );
     let { id, fullName, tel, addr } = req.body;
     var [row, field] = await pool.execute("select * from userB where tel = ? and Admin = ?", [tel, username]);
     if (row.length !== 0) {
       message.mess = "Phone number already exists.";
-      return res.render("console", { user: user, message: message });
+      return res.render("allUser", { dataUser: rows, message: message });
     }
     await pool.execute(
       "update userB set fullName = ?, tel = ?, addr = ? where id = ? AND Admin = ?",
       [fullName, tel, addr, id, username]
     );
-    return res.redirect("allUser");
+    message.mess = "Update user successfully.";
+    return res.render("allUser", { dataUser: rows, message: message });
   } catch (error) {
     console.log(error);
     return res.render("BUG");
@@ -249,17 +254,24 @@ let editVehicle = async (req, res) => {
 let updateVehicle = async (req, res) => {
   try {
     const username = req.session.username;
+    var [rows, fields] = await pool.execute(
+      "SELECT * FROM vehicle where Admin = ?",
+      [username]
+    );
+    rows.forEach((veh) => {
+      veh.type = (veh.type === "type1") ? "Bicycle/ Electric bicycle" : (veh.type === "type2") ? "Motorcycle" : (veh.type === "type3") ? "Car" : "Other";
+    });
     let { idV, type, license, id } = req.body;
     var [row, field] = await pool.execute("select * from vehicle where license = ? and Admin = ?", [license, username]);
     if (row.length !== 0) {
       message.mess = "License plate already exists.";
-      return res.render("console", { user: user, message: message });
+      return res.render("allVehicle.ejs", { dataVehicle: rows, message: message });
     }
     await pool.execute(
       "update vehicle set license = ?, type = ?, id = ? where idV = ? AND Admin = ?",
       [license, type, id, idV, username]
     );
-    return res.redirect("allVehicle");
+    return res.render("allVehicle.ejs", { dataVehicle: rows, message: message });
   } catch (error) {
     console.log(error);
     return res.render("BUG");
