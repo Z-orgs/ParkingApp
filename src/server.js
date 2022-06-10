@@ -19,7 +19,7 @@ app.use(express.json());
 configViewEngine(app);
 initWebRoute(app);
 app.use((req, res) => {
-  return res.redirect("/");
+  return res.redirect("/BUG");
 });
 app.listen(PORT, () => {
   herokuAwake(url);

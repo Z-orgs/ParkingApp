@@ -1,7 +1,12 @@
 var mess = "";
 var message = { "mess": mess };
 let getHomePage = (req, res) => {
-  return res.render("index.ejs");
+  try {
+    return res.render("index.ejs");
+  } catch (error) {
+    console.log(error);
+    return res.render("BUG");
+  }
 };
 let getLoginPage = function (req, res) {
   try {
@@ -11,7 +16,7 @@ let getLoginPage = function (req, res) {
       return res.render("./LOG/login", { message: message });
     }
   } catch (error) {
-    return res.redirect("login");
+    return res.redirect("/login");
   }
 };
 let getRegPage = function (req, res) {
@@ -33,7 +38,7 @@ let getConsolePage = async (req, res) => {
       var user = { "username": username };
       return res.render("console", { user: user, message: message });
     } else {
-      return res.redirect("login");
+      return res.redirect("/login");
     }
   } catch (error) {
     console.log(error);
@@ -42,9 +47,13 @@ let getConsolePage = async (req, res) => {
     return res.render("BUG");
   }
 };
+let getBUGPage = (req, res) => {
+  return res.render("BUG");
+};
 export default {
   getHomePage,
   getConsolePage,
   getRegPage,
-  getLoginPage
+  getLoginPage,
+  getBUGPage
 };

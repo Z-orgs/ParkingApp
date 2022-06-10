@@ -8,7 +8,6 @@ let router = express.Router();
 const initWebRoute = (app) => {
   //get
   router.get("/", homeController.getHomePage);
-  // router.get("/home", homeController.getHomePage);
   router.get("/console", homeController.getConsolePage);
   router.get("/allUser", consoleController.getAllUser);
   router.get("/allVehicle", consoleController.getAllVehicle);
@@ -19,6 +18,7 @@ const initWebRoute = (app) => {
   router.get("/login", homeController.getLoginPage);
   router.get("/register", homeController.getRegPage);
   router.get("/logout", auth.logout);
+  router.get("/BUG", homeController.getBUGPage);
   //post
   router.post("/delete-vehicle", consoleController.deleteVehicle);
   router.post("/delete-user", consoleController.deleteUser);
