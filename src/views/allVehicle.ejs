@@ -166,6 +166,15 @@
         <tbody>
     </table>
 </div> -->
+    <script>
+        showAlert = function (err) {
+            alert('Server: ' + err);
+        };
+        var error = "<%= message.mess %>";
+        if (error !== "") {
+            showAlert(error);
+        }
+    </script>
 </body>
 
 </html>
