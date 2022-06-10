@@ -10,7 +10,7 @@ let getAllUser = async (req, res) => {
       "SELECT * FROM userB where Admin = ?",
       [username]
     );
-    return res.render("allUser.ejs", { dataUser: rows });
+    return res.render("allUser", { dataUser: rows, message: message });
   } catch (error) {
     console.log(error);
     return res.render("BUG");
@@ -26,7 +26,7 @@ let getAllVehicle = async (req, res) => {
     rows.forEach((veh) => {
       veh.type = (veh.type === "type1") ? "Bicycle/ Electric bicycle" : (veh.type === "type2") ? "Motorcycle" : (veh.type === "type3") ? "Car" : "Other";
     });
-    return res.render("allVehicle.ejs", { dataVehicle: rows });
+    return res.render("allVehicle.ejs", { dataVehicle: rows, message: message });
   } catch (error) {
     console.log(error);
     return res.render("BUG");
