@@ -253,8 +253,12 @@ let updateUser = async (req, res) => {
       [username]
     );
     let { id, fullName, tel, addr } = req.body;
+    let user = await pool.execute(
+      "select * from userB where id = ? AND Admin = ?",
+      [id, username]
+    );
     var [row, field] = await pool.execute("select * from userB where tel = ? and Admin = ?", [tel, username]);
-    if (row.length !== 0) {
+    if (row.length !== 0 && user[0][0].tel !== tel) {
       message.mess0 = "Phone number already exists.";
       return res.render("allUser", { dataUser: rows, message: message });
     }
@@ -301,17 +305,21 @@ let updateVehicle = async (req, res) => {
     });
     let { idV, type, license, id } = req.body;
     var [row, field] = await pool.execute("select * from vehicle where license = ? and Admin = ?", [license, username]);
-    if (row.length !== 0) {
+    let vehicle = await pool.execute(
+      "select * from vehicle where idV = ? AND Admin = ?",
+      [idV, username]
+    );
+    if (row.length !== 0 && vehicle[0][0].license !== license) {
       message.mess0 = "License plate already exists.";
       return res.render("allVehicle.ejs", { dataVehicle: rows, message: message });
     }
     var [row, fields] = await pool.execute(
       "select * from userB where id = ? AND Admin = ?",
-      [rows[0].id, username]
+      [id, username]
     );
     if (row.length === 0) {
       message.mess0 = "ID not found.";
-      return res.render("console", { user: user, message: message });
+      return res.render("allVehicle.ejs", { dataVehicle: rows, message: message });
     }
     await pool.execute(
       "update vehicle set license = ?, type = ?, id = ? where idV = ? AND Admin = ?",
