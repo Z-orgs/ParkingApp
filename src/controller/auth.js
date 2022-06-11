@@ -21,7 +21,7 @@ let authLOG = async (req, res) => {
       [userA, pword]
     );
     if (rows.length == 0) {
-      message.mess = "login failed please check again";
+      message.mess = "Login failed please check again";
       return res.render("./LOG/login", { message: message });
     } else {
       req.session.loggedin = true;
