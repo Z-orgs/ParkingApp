@@ -1,4 +1,3 @@
-import { type } from "express/lib/response";
 import pool from "../configs/connectDB";
 String.prototype.hashCode = function () {
   var hash = 0, i, chr;
