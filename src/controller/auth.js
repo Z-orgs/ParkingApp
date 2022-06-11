@@ -76,15 +76,20 @@ let changePass = async (req, res) => {
       [req.session.username]
     );
     oldPass = oldPass[0][0];
-    if (parseInt(oldPass.pword) === req.body.oldPass.hashCode() && newPass === reNewPass) {
-      await pool.execute("update userAdmin set pword = ? where userA = ?", [
-        newPass,
-        req.session.username,
-      ]);
-      message.mess = "Change password successfully";
-      return res.render("console", { user: user, message: message });
+    if (parseInt(oldPass.pword) === req.body.oldPass.hashCode()) {
+      if (newPass === reNewPass) {
+        await pool.execute("update userAdmin set pword = ? where userA = ?", [
+          newPass,
+          req.session.username,
+        ]);
+        message.mess = "Change password successfully";
+        return res.render("console", { user: user, message: message });
+      } else {
+        message.mess = "New passwords are not the same";;
+        return res.render("console", { user: user, message: message });
+      }
     } else {
-      message.mess = "Password change failed";
+      message.mess = "Old password is not correct.";
       return res.render("console", { user: user, message: message });
     }
   } catch (error) {
