@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +7,7 @@
     <title>Register</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -50,11 +48,20 @@
                                 Sign In
                             </a>
                         </div>
-                        <form class="login-form" action="authREG" method="POST">
+                        <form id="register-form" class="lr-form" action="authREG" method="POST">
                             <form action="authREG" method="POST">
-                                <input type="text" name="username" placeholder="Username" required>
-                                <input type="password" name="password" placeholder="Password" required>
-                                <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+                                <div class="form-group">
+                                    <input type="text" id="user-name" class="form-control" name="username" placeholder="Username" rules="required|user_name">
+                                    <label for="user-name" class="error-msg"></label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" rules="required|min:8">
+                                    <label for="password" class="error-msg"></label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="confirmPassword" id="comfirm-password" class="form-control" placeholder="Confirm Password" rules="required|comfirm">
+                                    <label for="comfirm-password" class="error-msg"></label>
+                                </div>
                                 <input type="submit" class="btn register-btn" value="Register">
                             </form>
                         </form>
@@ -63,8 +70,9 @@
             </div>
         </div>
     </div>
-
-    <script type="text/javascript">
+    <script src="assets/js/validation.js"></script>
+    <script>
+        Validator('#register-form')
         showAlert = function (err) {
             alert('Server: ' + err);
         };

@@ -264,7 +264,7 @@
   padding-right: 10px;
 }
 
-.login-form {
+.lr-form {
   background: #ffffff6b;
   padding: 10px;
 }
@@ -648,4 +648,29 @@ tr:nth-child(even) {
   .notfound h2 {
     font-size: 16px;
   }
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 15px;
+}
+.form-control {
+  margin-bottom: 0;
+}
+.form-group.invalid .form-control {
+  border: 1px solid red;
+  background: #fadbdb;
+}
+.error-msg {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  /* padding-right: 8px; */
+  font-weight: 500;
+  color: #c0392b;
+  background: #fadbdb;
+  margin-right: 12px;
+  padding: 8px 0;
+  font-size: 13px;
 }

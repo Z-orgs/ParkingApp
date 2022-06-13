@@ -125,10 +125,13 @@
             <div class="form__body">
                 <div class="form__body-display active">
                     <h2 class="tab-title">Add Parking Turn</h2>
-                    <form action="add-new-turn" method="post">
+                    <form action="add-new-turn" method="post" id="add-turn">
                         <div class="mb-3">
                             <label for="license" class="form-label">License plate</label>
-                            <input type="text" class="form-control" name="license">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="license" rules="required">
+                                <span class="error-msg"></span>
+                            </div>
                         </div>
                         <div class="center-line">
                             <button class="button noselect btn-in-tab" type="submit">
@@ -142,18 +145,27 @@
                 </div>
                 <div class="form__body-display">
                     <h2 class="tab-title">Add User</h2>
-                    <form action="add-new-user" method="post">
+                    <form action="add-new-user" method="post" id="add-user">
                         <div class="mb-3">
                             <label for="fullName" class="form-label">Full name</label>
-                            <input type="text" class="form-control" name="fullName">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="fullName" rules="required|isFullName">
+                                <span class="error-msg"></span>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="tel" class="form-label">Phone number</label>
-                            <input type="text" class="form-control" name="tel">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="tel" rules="required|isPhoneNumber">
+                                <span class="error-msg"></span>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="addr" class="form-label">Address</label>
-                            <input type="text" class="form-control" name="addr">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="addr" rules="required">
+                                <span class="error-msg"></span>
+                            </div>
                         </div>
                         <div class="center-line">
                             <button class="button noselect btn-in-tab" type="submit">
@@ -168,7 +180,7 @@
                 </div>
                 <div class="form__body-display">
                     <h2 class="tab-title">Add Vehicle</h2>
-                    <form action="add-new-vehicle" method="post">
+                    <form action="add-new-vehicle" method="post" id="add-vehicle">
                         <div style="width: 100%; background: #fff;" class="custom-select">
                             <select name="typeVehicle" id="typeOfUser">
                                 <option value="type0">Choose vehicle type</option>
@@ -179,11 +191,17 @@
                         </div>
                         <div class="mb-3">
                             <label for="license" class="form-label">License plate</label>
-                            <input type="text" class="form-control" name="license">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="license" rules="required">
+                                <span class="error-msg"></span>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="id" class="form-label">Owner by ID</label>
-                            <input type="text" class="form-control" name="id">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="id" rules="required|isNumber">
+                                <span class="error-msg"></span>
+                            </div>
                         </div>
                         <div class="center-line">
                             <button class="button noselect btn-in-tab" type="submit">
@@ -197,14 +215,20 @@
                 </div>
                 <div class="form__body-display">
                     <h2 class="tab-title">Pay</h2>
-                    <form action="pay-user" method="post">
+                    <form action="pay-user" method="post" id="pay-form">
                         <div class="mb-3">
                             <label for="money" class="form-label">Cost</label>
-                            <input type="text" class="form-control" name="money">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="money" rules="required|isNumber">
+                                <span class="error-msg"></span>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="id" class="form-label">ID</label>
-                            <input type="text" class="form-control" name="id">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="id" rules="required|isNumber">
+                                <span class="error-msg"></span>
+                            </div>
                         </div>
                         <div class="center-line">
                             <button class="button noselect btn-in-tab" type="submit">
@@ -224,15 +248,27 @@
                 </div>
                 <div class="form__body-display">
                     <h2 class="tab-title">Edit Ticket Price</h2>
-                    <form action="change-price" method="post">
+                    <form action="change-price" method="post" id="edit-ticket">
                         <label for="priceType1" class="form-label">Bicycle/ Electric bicycle ticket cost</label>
-                        <input type="text" name="priceType1" placeholder="3000" required><br>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="priceType1" placeholder="3000" rules="required|isNumber"><br>
+                            <span class="error-msg"></span>
+                        </div>
                         <label for="priceType2" class="form-label">Motorcycle ticket price</label>
-                        <input type="text" name="priceType2" placeholder="5000" required><br>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="priceType2" placeholder="5000" rules="required|isNumber"><br>
+                            <span class="error-msg"></span>
+                        </div>
                         <label for="priceType3" class="form-label">Car ticket price</label>
-                        <input type="text" name="priceType3" placeholder="50000" required><br>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="priceType3" placeholder="50000" rules="required|isNumber"><br>
+                            <span class="error-msg"></span>
+                        </div>
                         <label for="priceType4" class="form-label">Ticket cost for other vehicles</label>
-                        <input type="text" name="priceType4" placeholder="20000" required><br>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="priceType4" placeholder="20000" rules="required|isNumber"><br>
+                            <span class="error-msg"></span>
+                        </div>
                         <div class="center-line">
                             <button class="button noselect btn-inverser-effect" type="reset">
                                 <span class="text">Reset</span>
@@ -253,11 +289,10 @@
             </div>
         </div>
     </div>
-
+    <script src="assets/js/validation.js"></script>
     <script type="text/javascript">
         const $ = document.querySelector.bind(document);
         const $$ = document.querySelectorAll.bind(document);
-
         const tabs = $$('.dashboard__item');
         const workPlaces = $$('.form__body-display');
         const tabActive = $('.dashboard__item.active');
@@ -366,12 +401,19 @@
         if (error !== "") {
             showAlert(error);
         }
-        var newLocation = () => {
-            window.location = "http://parkingapp.xyz/console";
-        };
-        if (window.location.href !== "http://parkingapp.xyz/console" && window.location.href !== "https://parkingapp.xyz/console") {
-            newLocation();
-        }
+        // var newLocation = () => {
+        //     window.location = "http://parkingapp.xyz/console";
+        // };
+        // if (window.location.href !== "http://parkingapp.xyz/console" && window.location.href !== "https://parkingapp.xyz/console") {
+        //     newLocation();
+        // }
+
+        Validator('#add-turn')
+        Validator('#add-user')
+        Validator('#add-vehicle')
+        Validator('#pay-form')
+        Validator('#edit-ticket')
+
     </script>
 
 </body>
