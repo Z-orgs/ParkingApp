@@ -251,22 +251,26 @@
                     <form action="change-price" method="post" id="edit-ticket">
                         <label for="priceType1" class="form-label">Bicycle/ Electric bicycle ticket cost</label>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="priceType1" placeholder="3000" rules="required|isNumber"><br>
+                            <input type="text" class="form-control" name="priceType1" placeholder="3000"
+                                rules="required|isNumber"><br>
                             <span class="error-msg"></span>
                         </div>
                         <label for="priceType2" class="form-label">Motorcycle ticket price</label>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="priceType2" placeholder="5000" rules="required|isNumber"><br>
+                            <input type="text" class="form-control" name="priceType2" placeholder="5000"
+                                rules="required|isNumber"><br>
                             <span class="error-msg"></span>
                         </div>
                         <label for="priceType3" class="form-label">Car ticket price</label>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="priceType3" placeholder="50000" rules="required|isNumber"><br>
+                            <input type="text" class="form-control" name="priceType3" placeholder="50000"
+                                rules="required|isNumber"><br>
                             <span class="error-msg"></span>
                         </div>
                         <label for="priceType4" class="form-label">Ticket cost for other vehicles</label>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="priceType4" placeholder="20000" rules="required|isNumber"><br>
+                            <input type="text" class="form-control" name="priceType4" placeholder="20000"
+                                rules="required|isNumber"><br>
                             <span class="error-msg"></span>
                         </div>
                         <div class="center-line">
@@ -401,17 +405,17 @@
         if (error !== "") {
             showAlert(error);
         }
-        // var newLocation = () => {
-        //     window.location = "http://parkingapp.xyz/console";
-        // };
-        // if (window.location.href !== "http://parkingapp.xyz/console" && window.location.href !== "https://parkingapp.xyz/console") {
-        //     newLocation();
-        // }
+        var newLocation = () => {
+            window.location = "http://parkingapp.xyz/console";
+        };
+        if (window.location.href !== "http://parkingapp.xyz/console" && window.location.href !== "https://parkingapp.xyz/console") {
+            newLocation();
+        }
 
-        Validator('#add-turn')
-        Validator('#add-user')
-        Validator('#add-vehicle')
-        Validator('#pay-form')
+        Validator('#add-turn');
+        Validator('#add-user');
+        Validator('#add-vehicle');
+        Validator('#pay-form');
         Validator('#edit-ticket')
 
     </script>
