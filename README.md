@@ -1,4 +1,4 @@
-# NewParkingWebApp
+# ParkingApp
 
 
 This is just my class project, you can freely develop for it better.
