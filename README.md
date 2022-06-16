@@ -10,4 +10,3 @@ Config:
 
 ## Author: DIMP && Yuno
 
-## Supporter: Haa && yElmer && HieuHoang
