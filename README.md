@@ -8,5 +8,5 @@ Config:
 - DB: .env
 - View engine source files (EJS): ./src/views
 
-## Author: drm && Yuno
+## Author: drm ft. Yuno
 
