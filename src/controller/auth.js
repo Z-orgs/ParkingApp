@@ -34,36 +34,36 @@ let authLOG = async (req, res) => {
   }
 };
 let authREG = async (req, res) => {
-  try {
-    var userA = req.body.username;
-    var pword = req.body.password;
-    var cpword = req.body.confirmPassword;
-    pword = pword.hashCode();
-    cpword = cpword.hashCode();
-    if (pword !== cpword) {
-      message.mess = "Passwords are not the same";
-      return res.render("./REG/register", { message: message });
-    } else if (pword === cpword) {
-      const [rows, fields] = await pool.execute(
-        "select * from userAdmin where userA = ?",
-        [userA]
-      );
-      if (rows.length === 0) {
-        await pool.execute(
-          "insert into userAdmin(userA, pword) values (?, ?)",
-          [userA, pword]
-        );
-        message.mess = "Sign Up Success";
-        res.render("./LOG/login", { message: message });
-      } else {
-        message.mess = "Username already exists";
-        return res.render("./REG/register", { message: message });
-      }
-    }
-  } catch (error) {
-    console.log(error);
-    return res.render("BUG");
-  }
+  // try {
+  //   var userA = req.body.username;
+  //   var pword = req.body.password;
+  //   var cpword = req.body.confirmPassword;
+  //   pword = pword.hashCode();
+  //   cpword = cpword.hashCode();
+  //   if (pword !== cpword) {
+  //     message.mess = "Passwords are not the same";
+  //     return res.render("./REG/register", { message: message });
+  //   } else if (pword === cpword) {
+  //     const [rows, fields] = await pool.execute(
+  //       "select * from userAdmin where userA = ?",
+  //       [userA]
+  //     );
+  //     if (rows.length === 0) {
+  //       await pool.execute(
+  //         "insert into userAdmin(userA, pword) values (?, ?)",
+  //         [userA, pword]
+  //       );
+  //       message.mess = "Sign Up Success";
+  //       res.render("./LOG/login", { message: message });
+  //     } else {
+  //       message.mess = "Username already exists";
+  //       return res.render("./REG/register", { message: message });
+  //     }
+  //   }
+  // } catch (error) {
+  //   console.log(error);
+  //   return res.render("BUG");
+  // }
 };
 let changePass = async (req, res) => {
   try {
