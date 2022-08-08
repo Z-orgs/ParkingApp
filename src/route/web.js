@@ -1,7 +1,7 @@
 import express from "express";
-import homeController from "../controller/homeController";
-import consoleController from "../controller/consoleController.js";
-import auth from "../controller/auth.js";
+import * as homeController from "../controller/homeController.js";
+import * as consoleController from "../controller/consoleController.js";
+import * as auth from "../controller/auth.js";
 let router = express.Router();
 
 const initWebRoute = (app) => {

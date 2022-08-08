@@ -1,4 +1,4 @@
-import pool from "../configs/connectDB";
+import pool from "../configs/connectDB.js";
 
 var mess = "";
 var mess0 = "";
@@ -421,7 +421,7 @@ let changePrice = async (req, res) => {
     message.mess0 = "";
   }
 };
-module.exports = {
+export {
   getAllUser,
   getDetailPageU,
   getDetailPageV,

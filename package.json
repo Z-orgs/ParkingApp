@@ -2,28 +2,23 @@
   "name": "newparkingwebapp",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "./src/index.js",
   "scripts": {
-    "start": "nodemon --exec ./node_modules/.bin/babel-node ./src/server.js",
+    "start": "node ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dimpDEV/NewParkingWebApp.git"
+    "url": "git+https://github.com/drmerveem/ParkingApp.git"
   },
-  "author": "dimpDEV",
+  "author": "drm",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dimpDEV/NewParkingWebApp/issues"
+    "url": "https://github.com/drmerveem/ParkingApp/issues"
   },
-  "homepage": "https://github.com/dimpDEV/NewParkingWebApp#readme",
+  "homepage": "https://github.com/drmerveem/ParkingApp#readme",
   "dependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.9",
-    "@babel/node": "^7.16.8",
-    "@babel/preset-env": "^7.16.11",
-    "bcrypt": "^5.0.1",
-    "body-parser": "^1.20.0",
     "dotenv": "^16.0.1",
     "ejs": "^3.0.2",
     "env": "^0.0.2",
@@ -31,7 +26,6 @@
     "express-session": "^1.17.2",
     "heroku-awake": "^1.0.10",
     "mysql2": "^2.3.3",
-    "nodemon": "^2.0.15",
     "path": "^0.12.7"
   }
 }

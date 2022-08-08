@@ -48,7 +48,7 @@ let getConsolePage = async (req, res) => {
     return res.render("BUG");
   }
 };
-export default {
+export {
   getHomePage,
   getConsolePage,
   getRegPage,

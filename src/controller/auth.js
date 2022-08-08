@@ -1,4 +1,4 @@
-import pool from "../configs/connectDB";
+import pool from "../configs/connectDB.js";
 String.prototype.hashCode = function () {
   var hash = 0, i, chr;
   if (this.length === 0) return hash;
@@ -107,7 +107,7 @@ let logout = (req, res) => {
     return res.render("BUG");
   }
 };
-module.exports = {
+export {
   authLOG,
   authREG,
   changePass,
