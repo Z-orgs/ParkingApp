@@ -24,7 +24,6 @@
     "env": "^0.0.2",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
-    "heroku-awake": "^1.0.10",
     "mysql2": "^2.3.3",
     "path": "^0.12.7"
   }
