@@ -10,14 +10,14 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drmerveem/ParkingApp.git"
+    "url": "git+https://github.com/KGBdrm/ParkingApp.git"
   },
   "author": "drm",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/drmerveem/ParkingApp/issues"
+    "url": "https://github.com/KGBdrm/ParkingApp/issues"
   },
-  "homepage": "https://github.com/drmerveem/ParkingApp#readme",
+  "homepage": "https://github.com/KGBdrm/ParkingApp#readme",
   "dependencies": {
     "dotenv": "^16.0.1",
     "ejs": "^3.0.2",
