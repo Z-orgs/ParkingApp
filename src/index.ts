@@ -9,5 +9,5 @@ app.use((req: Request, res: Response) => {
     return res.redirect('/');
 });
 app.listen(PORT, () => {
-    console.log(`OK: ${PORT}`);
+    console.log(`PORT: ${PORT}`);
 });
