@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/list.css">
+    <script>
+        if(window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 </head>
 
 <body>
@@ -91,7 +96,7 @@
             alert('Server: ' + err);
         };
         var error = "<%= message.mess0 %>";
-        if (error !== "") {
+        if(error !== "") {
             showAlert(error);
         }
     </script>

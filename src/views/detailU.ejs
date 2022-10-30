@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/detail.css">
+    <script>
+        if(window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 </head>
 
 <body>
@@ -29,7 +34,7 @@
                     ID
                 </div>
                 <div class="detail-table__row">
-                    Full Name    
+                    Full Name
                 </div>
                 <div class="detail-table__row">
                     In debt
@@ -46,7 +51,7 @@
                     <%= dataUser[0].id %>
                 </div>
                 <div class="detail-table__row">
-                    <%= dataUser[0].fullName %> 
+                    <%= dataUser[0].fullName %>
                 </div>
                 <div class="detail-table__row">
                     <%= dataUser[0].inDebt %>

@@ -11,9 +11,14 @@
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/detail.css">
+    <script>
+        if(window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 </head>
 
-<body>    
+<body>
     <div class="mid-screen">
         <div class="center-line">
             <a href="/allVehicle" class="button noselect btn-inverser-effect">
@@ -29,7 +34,7 @@
                     ID
                 </div>
                 <div class="detail-table__row">
-                    License    
+                    License
                 </div>
                 <div class="detail-table__row">
                     Type
@@ -43,7 +48,7 @@
                     <%= dataVehicle[0].idV %>
                 </div>
                 <div class="detail-table__row">
-                    <%= dataVehicle[0].license %> 
+                    <%= dataVehicle[0].license %>
                 </div>
                 <div class="detail-table__row">
                     <%= dataVehicle[0].type %>
