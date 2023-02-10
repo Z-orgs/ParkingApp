@@ -9,5 +9,5 @@ Config:
 - DB: .env
 - View engine source files (EJS): ./src/views
 
-## Author: REdirect ft. Yuno
+## Author: mxz ft. Yuno
 
